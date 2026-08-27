@@ -123,6 +123,48 @@
   .toast{position:fixed; left:50%; bottom:24px; transform:translateX(-50%) translateY(80px); background:var(--navy); color:#fff; font-size:13px; font-weight:600; padding:10px 18px; border-radius:999px; box-shadow:var(--shadow); transition:transform .25s ease; z-index:20; white-space:nowrap;}
   .toast.show{transform:translateX(-50%) translateY(0);}
   .loading-state, .error-state{flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; padding:40px 24px; text-align:center; color:var(--ink-soft); font-size:14px;}
+
+  .mode-switch{display:flex; gap:6px; margin-top:16px; background:rgba(255,255,255,0.1); border-radius:10px; padding:4px;}
+  .mode-switch button{flex:1; border:none; background:transparent; color:#C7D2DA; padding:9px 10px; border-radius:7px; font-size:13px; font-weight:600; cursor:pointer; transition:.15s;}
+  .mode-switch button.active{background:#fff; color:var(--navy);}
+  .mode-switch button:focus-visible{outline:2px solid #fff; outline-offset:2px;}
+
+  .tour-summary{display:flex; gap:10px;}
+  .tour-stat{flex:1; border:1px solid var(--line); border-radius:12px; padding:12px; text-align:center;}
+  .tour-stat .n{font-size:20px; font-weight:800; font-variant-numeric:tabular-nums;}
+  .tour-stat .l{font-size:11px; color:var(--ink-faint); margin-top:2px;}
+
+  .stop{border:1px solid var(--line); border-radius:12px; overflow:hidden;}
+  .stop-head{display:flex; align-items:center; gap:12px; padding:14px 16px; cursor:pointer; background:var(--paper);}
+  .stop-order{width:26px; height:26px; border-radius:50%; background:var(--navy); color:#fff; font-size:12px; font-weight:700; display:flex; align-items:center; justify-content:center; flex:none; font-variant-numeric:tabular-nums;}
+  .stop-addr{font-size:14px; font-weight:700;}
+  .stop-sub{font-size:11px; color:var(--ink-faint); margin-top:1px;}
+  .stop-chev{margin-left:auto; color:var(--ink-faint); transition:transform .15s;}
+  .stop.open .stop-chev{transform:rotate(180deg);}
+  .stop-body{max-height:0; overflow:hidden; transition:max-height .25s ease;}
+  .stop.open .stop-body{max-height:1200px;}
+  .stop-body-inner{padding:0 16px 16px; border-top:1px solid var(--line); padding-top:14px; display:flex; flex-direction:column; gap:14px;}
+
+  .rank-group{display:flex; flex-direction:column; gap:8px;}
+  .rank-cat{font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-faint); font-weight:700; margin-top:4px;}
+  .rank-row{display:flex; align-items:center; justify-content:space-between; gap:10px;}
+  .rank-row .rl{font-size:13px;}
+  .stars{display:flex; gap:4px;}
+  .stars button{width:26px; height:26px; border-radius:6px; border:1px solid var(--line); background:var(--paper); font-size:12px; font-weight:700; color:var(--ink-faint); cursor:pointer; padding:0;}
+  .stars button.on{background:var(--navy); border-color:var(--navy); color:#fff;}
+
+  .scale-legend{display:flex; justify-content:space-between; gap:6px; background:var(--cream); border:1px solid var(--line); border-radius:10px; padding:10px 12px;}
+  .scale-legend div{flex:1; text-align:center; font-size:10px; color:var(--ink-faint); line-height:1.4;}
+  .scale-legend b{display:block; font-size:13px; color:var(--ink-soft); font-variant-numeric:tabular-nums;}
+
+  .offer-toggle{display:flex; align-items:center; justify-content:space-between; border:1px solid var(--line); border-radius:10px; padding:12px 14px;}
+  .offer-toggle .t{font-size:13.5px; font-weight:600;}
+  .switch{width:42px; height:24px; border-radius:12px; background:var(--pass-bg); border:1px solid var(--line); position:relative; cursor:pointer; flex:none;}
+  .switch .knob{width:18px; height:18px; border-radius:50%; background:var(--paper); box-shadow:var(--shadow); position:absolute; top:2px; left:2px; transition:.15s;}
+  .switch.on{background:var(--good);}
+  .switch.on .knob{left:20px; background:#fff;}
+
+  .brand-card{width:100%; border-radius:14px; display:block; margin-bottom:12px;}
 </style>
 </head>
 <body>
@@ -152,6 +194,7 @@
   var STRINGS = {
     en: {
       eyebrow:"Your Home Search", title:"Property Review", preparedFor:"Prepared for {name}",
+      modeReview:"Property Review", modeTour:"Tour Day",
       passedChip:"Passed", clearedNote:"You don't need to carry around photos or documents for a home you passed on.",
       pendingChip:"Not reviewed yet", interestedChip:"Still want to see it",
       hoaMo:"HOA ${amt}/mo", hoaSeeDocs:"HOA: see documents",
@@ -185,10 +228,26 @@
       driveByToast:"Got it — thanks for checking out the area",
       loading:"Loading your properties…",
       missingToken:"This link is missing its code. Please check the link Freddy or Maria sent you.",
-      notFound:"We couldn't find that link. Please check the link Freddy or Maria sent you."
+      notFound:"We couldn't find that link. Please check the link Freddy or Maria sent you.",
+      tourContact:"Leave notes as you go or afterward — Francisco & Maria see them the moment you save.",
+      stopsToday:"Stops today", feedbackLeft:"Feedback left", readyToOffer:"Ready to offer",
+      noHomesTitle:"No homes marked yet",
+      noHomesBody:"Mark a few \"still want to see it\" in Property Review first — they'll line up here for tour day.",
+      notesFromShowing:"Notes from the showing",
+      notesFromShowingPlaceholder:"How did it feel walking in, anything that changed your mind...",
+      readyOfferToggle:"Ready to write an offer",
+      feedbackSavedToast:"Saved your feedback for {address}",
+      rankGroups:[
+        {cat:"Value", items:[["value","Overall value for the price"]]},
+        {cat:"Location", items:[["commute","Commute & convenience"],["neighborhood","Neighborhood feel & safety"],["noise","Traffic & noise level"]]},
+        {cat:"Layout & Condition", items:[["layout","Layout & flow"],["condition","Move-in condition & upkeep"],["space","Storage & space"]]},
+        {cat:"Final Impression", items:[["light","Natural light & atmosphere"],["curbAppeal","Curb appeal"],["theOne","“This is the one” feeling"]]}
+      ],
+      scaleLegend:[["1","Poor"],["2","Below avg."],["3","Average"],["4","Good"],["5","Exceptional"]]
     },
     es: {
       eyebrow:"Tu Búsqueda de Casa", title:"Revisión de Propiedades", preparedFor:"Preparado para {name}",
+      modeReview:"Revisión de Propiedades", modeTour:"Día del Recorrido",
       passedChip:"Descartada", clearedNote:"No necesitas cargar con fotos ni documentos de una casa que ya descartaste.",
       pendingChip:"Aún sin revisar", interestedChip:"Sigue interesándote",
       hoaMo:"HOA ${amt}/mes", hoaSeeDocs:"HOA: ver documentos",
@@ -222,7 +281,22 @@
       driveByToast:"Entendido — gracias por revisar la zona",
       loading:"Cargando tus propiedades…",
       missingToken:"A este enlace le falta el código. Revisa el enlace que te envió Francisco o Maria.",
-      notFound:"No pudimos encontrar ese enlace. Revisa el enlace que te envió Francisco o Maria."
+      notFound:"No pudimos encontrar ese enlace. Revisa el enlace que te envió Francisco o Maria.",
+      tourContact:"Deja notas mientras recorres o después — Francisco y Maria las ven en cuanto guardas.",
+      stopsToday:"Paradas hoy", feedbackLeft:"Comentarios dejados", readyToOffer:"Listas para ofertar",
+      noHomesTitle:"Aún no hay casas marcadas",
+      noHomesBody:"Marca algunas como \"sigue interesándome\" en Revisión de Propiedades primero — aparecerán aquí para el día del recorrido.",
+      notesFromShowing:"Notas de la visita",
+      notesFromShowingPlaceholder:"¿Qué se sintió al entrar? ¿Algo que te hiciera cambiar de opinión...?",
+      readyOfferToggle:"Lista para hacer una oferta",
+      feedbackSavedToast:"Comentarios guardados para {address}",
+      rankGroups:[
+        {cat:"Valor", items:[["value","Valor general por el precio"]]},
+        {cat:"Ubicación", items:[["commute","Traslado y conveniencia"],["neighborhood","Ambiente y seguridad del vecindario"],["noise","Tráfico y nivel de ruido"]]},
+        {cat:"Distribución y Condición", items:[["layout","Distribución y flujo"],["condition","Condición para mudarse y mantenimiento"],["space","Almacenamiento y espacio"]]},
+        {cat:"Impresión Final", items:[["light","Luz natural y ambiente"],["curbAppeal","Apariencia exterior"],["theOne","Sensación de “esta es la indicada”"]]}
+      ],
+      scaleLegend:[["1","Mala"],["2","Bajo promedio"],["3","Promedio"],["4","Buena"],["5","Excepcional"]]
     }
   };
 
@@ -237,6 +311,20 @@
     return s;
   }
   function money(n){ return "$" + n.toLocaleString("en-US"); }
+
+  function stars(value, onSet){
+    var html = '<div class="stars">';
+    for (var i=1;i<=5;i++){
+      html += '<button type="button" class="'+(value>=i?'on':'')+'" data-i="'+i+'" aria-label="'+i+' of 5">'+i+'</button>';
+    }
+    html += '</div>';
+    var wrap = document.createElement('div');
+    wrap.innerHTML = html;
+    wrap.querySelectorAll('button').forEach(function(b){
+      b.addEventListener('click', function(){ onSet(parseInt(b.dataset.i,10)); });
+    });
+    return wrap;
+  }
 
   function showToast(msg){
     var t = document.getElementById('toast');
@@ -309,6 +397,18 @@
     postAction('submitSetStatus', { token: STATE.token, propId: p.propId, status: p.status }, function(){
       if (p.status === "interested") showToast(tr('interestedToast', {address:p.address}));
       if (p.status === "passed") showToast(tr('passedToast', {address:p.address}));
+    });
+  }
+
+  function setMode(mode){
+    STATE.mode = mode;
+    render();
+    postAction('submitSetMode', { token: STATE.token, mode: mode });
+  }
+
+  function saveFeedback(p, showConfirmToast){
+    postAction('submitSetFeedback', { token: STATE.token, propId: p.propId, feedback: p.feedback }, function(){
+      if (showConfirmToast) showToast(tr('feedbackSavedToast', {address:p.address}));
     });
   }
 
@@ -397,7 +497,7 @@
         '<button type="button" id="nextBtn" '+(STATE.current===total-1?'disabled':'')+'>'+tr('nextBtn')+'</button>' +
       '</div>' +
       '</main>' +
-      '<footer><div class="contact">'+tr('contact')+'</div></footer>';
+      '<footer><img class="brand-card" src="contact_card.jpg" alt="Francisco and Maria Rodriguez contact card"><div class="contact">'+tr('contact')+'</div></footer>';
 
     if (!passed){
       var docs = root.querySelector('#docs');
@@ -532,6 +632,105 @@
     });
   }
 
+  function renderTour(root){
+    var interested = STATE.properties.filter(function(p){ return p.status==='interested'; });
+    var readyCount = interested.filter(function(p){ return p.feedback.offerReady; }).length;
+    var feedbackLeftCount = interested.filter(function(p){ return Object.keys(p.feedback.ranks).length>0; }).length;
+
+    root.innerHTML =
+      '<main>' +
+        '<div class="tour-summary">' +
+          '<div class="tour-stat"><div class="n">'+interested.length+'</div><div class="l">'+tr('stopsToday')+'</div></div>' +
+          '<div class="tour-stat"><div class="n">'+feedbackLeftCount+'</div><div class="l">'+tr('feedbackLeft')+'</div></div>' +
+          '<div class="tour-stat"><div class="n">'+readyCount+'</div><div class="l">'+tr('readyToOffer')+'</div></div>' +
+        '</div>' +
+        '<div id="stops" style="display:flex; flex-direction:column; gap:12px;"></div>' +
+      '</main>' +
+      '<footer><img class="brand-card" src="contact_card.jpg" alt="Francisco and Maria Rodriguez contact card"><div class="contact">'+tr('tourContact')+'</div></footer>';
+
+    var stopsEl = root.querySelector('#stops');
+    if (!interested.length){
+      stopsEl.innerHTML = '<section class="block"><h3>'+tr('noHomesTitle')+'</h3><div style="font-size:13px;color:var(--ink-soft)">'+tr('noHomesBody')+'</div></section>';
+      return;
+    }
+
+    interested.forEach(function(p, idx){
+      var stop = document.createElement('div');
+      stop.className = 'stop';
+      stop.innerHTML =
+        '<div class="stop-head">' +
+          '<div class="stop-order">'+(idx+1)+'</div>' +
+          '<div>' +
+            '<div class="stop-addr">'+p.address+'</div>' +
+            '<div class="stop-sub">'+p.cityLine+'</div>' +
+          '</div>' +
+          '<div class="stop-chev">&#9662;</div>' +
+        '</div>' +
+        '<div class="stop-body"><div class="stop-body-inner"></div></div>';
+      stop.querySelector('.stop-head').addEventListener('click', function(){ stop.classList.toggle('open'); });
+      var inner = stop.querySelector('.stop-body-inner');
+
+      var legend = document.createElement('div');
+      legend.className = 'scale-legend';
+      legend.innerHTML = T.scaleLegend.map(function(pair){ return '<div><b>'+pair[0]+'</b>'+pair[1]+'</div>'; }).join('');
+      inner.appendChild(legend);
+
+      T.rankGroups.forEach(function(g){
+        var catEl = document.createElement('div');
+        catEl.className = 'rank-cat';
+        catEl.textContent = g.cat;
+        inner.appendChild(catEl);
+        var group = document.createElement('div');
+        group.className = 'rank-group';
+        g.items.forEach(function(item){
+          var key = item[0], label = item[1];
+          var row = document.createElement('div');
+          row.className = 'rank-row';
+          var span = document.createElement('span');
+          span.className = 'rl';
+          span.textContent = label;
+          row.appendChild(span);
+          row.appendChild(stars(p.feedback.ranks[key]||0, function(val){
+            p.feedback.ranks[key] = val;
+            var wasOpen = stop.classList.contains('open');
+            renderTour(root);
+            if (wasOpen) root.querySelectorAll('.stop')[idx].classList.add('open');
+            saveFeedback(p, false);
+          }));
+          group.appendChild(row);
+        });
+        inner.appendChild(group);
+      });
+
+      var notesLbl = document.createElement('label');
+      notesLbl.className = 'field-label';
+      notesLbl.textContent = tr('notesFromShowing');
+      var notesArea = document.createElement('textarea');
+      notesArea.value = p.feedback.notes;
+      notesArea.placeholder = tr('notesFromShowingPlaceholder');
+      notesArea.addEventListener('change', function(e){
+        p.feedback.notes = e.target.value;
+        saveFeedback(p, true);
+      });
+      inner.appendChild(notesLbl);
+      inner.appendChild(notesArea);
+
+      var offer = document.createElement('div');
+      offer.className = 'offer-toggle';
+      offer.innerHTML = '<span class="t">'+tr('readyOfferToggle')+'</span><div class="switch '+(p.feedback.offerReady?'on':'')+'"><div class="knob"></div></div>';
+      offer.querySelector('.switch').addEventListener('click', function(){
+        p.feedback.offerReady = !p.feedback.offerReady;
+        var wasOpen = stop.classList.contains('open');
+        renderTour(root);
+        if (wasOpen) root.querySelectorAll('.stop')[idx].classList.add('open');
+        saveFeedback(p, false);
+      });
+      inner.appendChild(offer);
+
+      stopsEl.appendChild(stop);
+    });
+  }
+
   function render(){
     var app = document.getElementById('app');
     var total = STATE.properties.length;
@@ -545,9 +744,17 @@
           '<div class="progress-track"><div class="progress-fill" style="width:'+((decided/total)*100)+'%"></div></div>' +
           '<span class="progress-label">'+decided+'/'+total+'</span>' +
         '</div>' +
+        '<div class="mode-switch" id="modeSwitch">' +
+          '<button type="button" data-mode="review" class="'+(STATE.mode==='review'?'active':'')+'">'+tr('modeReview')+'</button>' +
+          '<button type="button" data-mode="tour" class="'+(STATE.mode==='tour'?'active':'')+'">'+tr('modeTour')+'</button>' +
+        '</div>' +
       '</header>' +
       '<div id="body"></div>';
-    renderReview(document.getElementById('body'));
+    app.querySelectorAll('#modeSwitch button').forEach(function(b){
+      b.addEventListener('click', function(){ setMode(b.dataset.mode); });
+    });
+    var body = document.getElementById('body');
+    if (STATE.mode === 'tour') renderTour(body); else renderReview(body);
   }
 
   function renderMessage(msg){
