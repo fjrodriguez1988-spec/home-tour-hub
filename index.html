@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html>
+<head>
+<base target="_top">
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<title>Home Tour Hub</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600&display=swap');
+
+  :root{
+    --navy:#14283C;
+    --navy-deep:#0A1E3C;
+    --paper:#FFFFFF;
+    --cream:#F6F7F5;
+    --line:#E3E7E9;
+    --ink:#14283C;
+    --ink-soft:#5B6B78;
+    --ink-faint:#8B99A3;
+    --good:#2F7A52;
+    --good-bg:#E7F3EC;
+    --warn:#B45309;
+    --warn-bg:#FDF3E7;
+    --pass:#8B99A3;
+    --pass-bg:#EEF1F2;
+    --focus:#14283C;
+    --shadow: 0 1px 2px rgba(20,40,60,0.06), 0 8px 24px rgba(20,40,60,0.08);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#121A24; --cream:#0D141C; --line:#25313E; --ink:#EDF1F4;
+      --ink-soft:#9FB0BC; --ink-faint:#6E7E8A; --good:#5FD394; --good-bg:#12291D;
+      --warn:#F0B45F; --warn-bg:#2B2211; --pass:#7E8E99; --pass-bg:#1B242D;
+      --focus:#EDF1F4; --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.4);
+    }
+  }
+  *{box-sizing:border-box;}
+  body{ margin:0; background:var(--cream); color:var(--ink); font-family:'Montserrat', Arial, sans-serif; -webkit-font-smoothing:antialiased; min-height:100vh; }
+  a{color:inherit;}
+  button{font-family:inherit;}
+  h1,h2,h3{font-family:'Poppins',Arial,sans-serif; margin:0;}
+  .app{max-width:640px; margin:0 auto; min-height:100vh; background:var(--paper); box-shadow:var(--shadow); display:flex; flex-direction:column;}
+  header{background:var(--navy); color:#fff; padding:22px 20px 18px;}
+  .eyebrow{font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:#AEBBC6; font-weight:600;}
+  header h1{font-size:22px; font-weight:700; margin-top:4px;}
+  .buyer-line{font-size:13px; color:#C7D2DA; margin-top:2px;}
+  .progress-row{display:flex; align-items:center; gap:10px; margin-top:16px;}
+  .progress-track{flex:1; height:5px; border-radius:3px; background:rgba(255,255,255,0.18); overflow:hidden;}
+  .progress-fill{height:100%; background:#fff; border-radius:3px; transition:width .3s ease;}
+  .progress-label{font-size:12px; color:#C7D2DA; font-variant-numeric:tabular-nums; white-space:nowrap;}
+  .tabs{display:flex; gap:8px; overflow-x:auto; padding:14px 20px; border-bottom:1px solid var(--line); scrollbar-width:none;}
+  .tabs::-webkit-scrollbar{display:none;}
+  .tab{flex:none; width:38px; height:38px; border-radius:50%; border:1.5px solid var(--line); background:var(--paper); color:var(--ink-soft); font-weight:700; font-size:13px; cursor:pointer; display:flex; align-items:center; justify-content:center; position:relative;}
+  .tab.current{border-color:var(--ink); color:var(--ink); box-shadow:0 0 0 3px rgba(20,40,60,0.08);}
+  .tab .dot{position:absolute; top:-3px; right:-3px; width:10px; height:10px; border-radius:50%; border:2px solid var(--paper);}
+  .tab .dot.interested{background:var(--good);}
+  .tab .dot.passed{background:var(--pass);}
+  .tab .dot.question{background:var(--warn);}
+  main{flex:1; padding:20px; display:flex; flex-direction:column; gap:18px;}
+  .photo{aspect-ratio:16/10; border-radius:14px; position:relative; overflow:hidden; display:flex; align-items:flex-end; padding:16px; background:var(--cream);}
+  .photo img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;}
+  .photo .status-chip{position:relative; z-index:1; font-size:12px; font-weight:700; padding:6px 12px; border-radius:999px; letter-spacing:.02em;}
+  .status-chip.pending{background:rgba(255,255,255,0.92); color:var(--ink-soft);}
+  .status-chip.interested{background:var(--good); color:#fff;}
+  .status-chip.passed{background:rgba(20,40,60,0.75); color:#fff;}
+  .passed-card{border:1px solid var(--line); border-radius:14px; padding:22px 20px; display:flex; flex-direction:column; align-items:flex-start; gap:8px; background:var(--cream);}
+  .passed-card .status-chip{position:static;}
+  .passed-card h2{font-size:18px; margin-top:4px;}
+  .cleared-note{font-size:12.5px; color:var(--ink-faint); line-height:1.5; margin-top:4px;}
+  .addr-block h2{font-size:20px; font-weight:700;}
+  .addr-sub{font-size:13px; color:var(--ink-soft); margin-top:2px;}
+  .price-row{display:flex; align-items:baseline; gap:10px; margin-top:8px;}
+  .price{font-size:26px; font-weight:800; font-variant-numeric:tabular-nums; color:var(--ink);}
+  .mls{font-size:11px; color:var(--ink-faint); font-variant-numeric:tabular-nums;}
+  .stat-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:10px; overflow:hidden; margin-top:14px;}
+  .stat{background:var(--paper); padding:10px 6px; text-align:center;}
+  .stat .v{font-size:15px; font-weight:700; font-variant-numeric:tabular-nums;}
+  .stat .l{font-size:10px; color:var(--ink-faint); text-transform:uppercase; letter-spacing:.06em; margin-top:2px;}
+  section.block{border:1px solid var(--line); border-radius:12px; padding:16px;}
+  section.block h3{font-size:13px; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-soft); margin-bottom:10px;}
+  .doc-row{display:flex; align-items:center; gap:10px; padding:10px 0;}
+  .doc-icon{width:30px; height:30px; border-radius:7px; background:var(--cream); display:flex; align-items:center; justify-content:center; flex:none;}
+  .doc-name{font-size:13.5px; font-weight:600;}
+  .doc-type{font-size:11px; color:var(--ink-faint);}
+  .doc-open{margin-left:auto; font-size:13px; font-weight:700; color:var(--ink); background:var(--cream); border:1.5px solid var(--line); border-radius:8px; cursor:pointer; padding:8px 16px;}
+  .doc-open:hover{border-color:var(--ink-faint);}
+  .doc-viewer-frame{margin-top:10px; border:1px solid var(--line); border-radius:10px; overflow:hidden; background:var(--cream);}
+  .doc-viewer-frame iframe{width:100%; height:520px; border:none; display:block;}
+  .doc-email-toggle{background:none; border:none; color:var(--ink-soft); font-size:12px; font-weight:600; cursor:pointer; padding:8px 2px 0; text-decoration:underline; text-underline-offset:2px;}
+  .doc-email-toggle:hover{color:var(--ink);}
+  .doc-email-panel{border:1px solid var(--line); border-radius:12px; padding:14px; display:flex; flex-direction:column; gap:10px; margin-top:10px;}
+  .doc-email-panel input{border:1px solid var(--line); border-radius:8px; padding:10px 11px; font-size:13.5px; font-family:inherit; background:var(--paper); color:var(--ink);}
+  .doc-email-sent{border:1px solid var(--good); background:var(--good-bg); border-radius:12px; padding:12px 14px; font-size:13px; color:var(--good); line-height:1.5; margin-top:10px;}
+  textarea{width:100%; border:1px solid var(--line); border-radius:10px; padding:10px 12px; font:inherit; font-size:13.5px; color:var(--ink); background:var(--paper); resize:vertical; min-height:64px;}
+  textarea:focus-visible, button:focus-visible, input:focus-visible{outline:2px solid var(--focus); outline-offset:2px;}
+  .field-label{font-size:12px; font-weight:600; color:var(--ink-soft); margin-bottom:6px; display:block;}
+  .decision-bar{display:flex; gap:10px;}
+  .decision-bar button{flex:1; border-radius:12px; padding:15px 10px; font-size:14.5px; font-weight:700; cursor:pointer; border:1.5px solid var(--line); background:var(--paper); color:var(--ink); display:flex; align-items:center; justify-content:center; gap:8px; transition:.15s;}
+  .decision-bar button.pass-btn.active{background:var(--pass-bg); border-color:var(--pass); color:var(--ink-soft);}
+  .decision-bar button.yes-btn.active{background:var(--good-bg); border-color:var(--good); color:var(--good);}
+  .question-toggle{background:none; border:1px dashed var(--line); border-radius:10px; padding:11px 12px; font-size:13px; font-weight:600; color:var(--ink-soft); cursor:pointer; display:flex; align-items:center; justify-content:center; gap:7px; width:100%;}
+  .question-toggle:hover{border-color:var(--ink-faint); color:var(--ink);}
+  .question-panel{border:1px solid var(--line); border-radius:12px; padding:14px; display:flex; flex-direction:column; gap:10px;}
+  .question-sent{border:1px solid var(--good); background:var(--good-bg); border-radius:12px; padding:12px 14px; font-size:13px; color:var(--good); line-height:1.5;}
+  .question-sent b{display:block; font-size:11px; text-transform:uppercase; letter-spacing:.05em; margin-bottom:3px;}
+  .question-send{align-self:flex-end; background:var(--navy); color:#fff; border:none; border-radius:8px; padding:9px 16px; font-size:13px; font-weight:700; cursor:pointer;}
+  .question-cancel{background:none; border:none; color:var(--ink-faint); font-size:12px; font-weight:600; cursor:pointer; align-self:flex-end; margin-right:8px;}
+  .nav-row{display:flex; justify-content:space-between; padding-top:2px;}
+  .nav-row button{background:none; border:none; color:var(--ink-soft); font-size:13px; font-weight:600; cursor:pointer; padding:8px 2px; display:flex; align-items:center; gap:5px;}
+  .nav-row button:disabled{opacity:.3; cursor:default;}
+  .confirm-row + .confirm-row{margin-top:10px;}
+  .confirm-track{position:relative; height:48px; border-radius:24px; border:1.5px solid var(--line); background:var(--cream); overflow:hidden; display:flex; align-items:center; cursor:pointer; user-select:none;}
+  .confirm-fill{position:absolute; inset:0; width:0%; background:var(--good-bg); transition:width .2s ease;}
+  .confirm-row.confirmed .confirm-fill{width:100%;}
+  .confirm-thumb{position:absolute; top:4px; left:4px; width:38px; height:38px; border-radius:50%; background:var(--paper); box-shadow:var(--shadow); display:flex; align-items:center; justify-content:center; font-weight:700; color:var(--ink-soft); transition:left .2s ease, background .2s ease, color .2s ease; z-index:2;}
+  .confirm-row.confirmed .confirm-thumb{left:calc(100% - 42px); background:var(--good); color:#fff;}
+  .confirm-text{position:relative; z-index:1; flex:1; text-align:center; font-size:12.5px; font-weight:600; color:var(--ink-soft); padding:0 46px;}
+  .confirm-row.confirmed .confirm-text{color:var(--good);}
+  .maps-link{display:inline-flex; align-items:center; gap:6px; margin-top:10px; font-size:13px; font-weight:700; color:var(--ink); text-decoration:none; background:var(--cream); border:1.5px solid var(--line); border-radius:999px; padding:9px 16px;}
+  footer{padding:16px 20px 26px; text-align:center;}
+  .contact{font-size:11.5px; color:var(--ink-faint); line-height:1.6;}
+  .contact b{color:var(--ink-soft);}
+  .toast{position:fixed; left:50%; bottom:24px; transform:translateX(-50%) translateY(80px); background:var(--navy); color:#fff; font-size:13px; font-weight:600; padding:10px 18px; border-radius:999px; box-shadow:var(--shadow); transition:transform .25s ease; z-index:20; white-space:nowrap;}
+  .toast.show{transform:translateX(-50%) translateY(0);}
+  .loading-state, .error-state{flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; padding:40px 24px; text-align:center; color:var(--ink-soft); font-size:14px;}
+</style>
+</head>
+<body>
+<div class="app" id="app"></div>
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  "use strict";
+
+  // ---------------------------------------------------------------------
+  // Backend: Google Apps Script web app (Sheet + Drive), unchanged.
+  // This page is now the ONLY thing served off GitHub Pages — it talks to
+  // the Apps Script /exec URL purely as a background JSON API:
+  //   - reads use JSONP (a <script> tag), which is not subject to CORS,
+  //     because Apps Script doGet/doPost responses don't carry
+  //     Access-Control-Allow-Origin headers and a real fetch() from a
+  //     different origin cannot read them.
+  //   - writes use fetch(..., {mode:'no-cors'}) — the POST still executes
+  //     server-side even though the browser can't read the response back.
+  // ---------------------------------------------------------------------
+  var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxVIKeso7b_W_TI68DQPehqZq0qECjlR0IlBd9gSAqqkk6upfoQP8lE9GEefbCQmH7S/exec';
+
+  var STATE = null;
+  var TOKEN = new URLSearchParams(window.location.search).get('t');
+
+  var STRINGS = {
+    en: {
+      eyebrow:"Your Home Search", title:"Property Review", preparedFor:"Prepared for {name}",
+      passedChip:"Passed", clearedNote:"You don't need to carry around photos or documents for a home you passed on.",
+      pendingChip:"Not reviewed yet", interestedChip:"Still want to see it",
+      hoaMo:"HOA ${amt}/mo", hoaSeeDocs:"HOA: see documents",
+      beds:"Beds", baths:"Baths", sqft:"Sq Ft", perSqft:"$ / Sq Ft",
+      documents:"Documents", allDocuments:"All Documents", docType:"Floor plans, disclosures, surveys & more",
+      view:"View", hide:"Hide",
+      docEmailToggle:"Can't see the documents? Email them to me instead",
+      docEmailLabel:"Where should we send them?", docEmailPlaceholder:"you@email.com",
+      cancel:"Cancel", docEmailSend:"Send documents",
+      docEmailSentTitle:"On the way",
+      docEmailSentBody:"We'll email these documents to {email} shortly — check your inbox (and spam folder) in a bit.",
+      docEmailToast:"We'll email the documents to {email}",
+      docEmailResend:"Didn't get them? Resend or use a different email",
+      beforeDecide:"Before You Decide",
+      confirmDocsPending:"Slide to confirm you've reviewed the documents", confirmDocsDone:"✓ Documents reviewed",
+      confirmDrivePending:"Slide to confirm you've driven by or walked the area", confirmDriveDone:"✓ Checked out the area",
+      mapsLink:"📍 View the area on Google Maps ↗",
+      notesLabel:"Your notes on this one", notesPlaceholder:"What stood out, any concerns...",
+      passBtn:"Pass", yesBtn:"Still want to see it",
+      questionToggle:"Have a question about this one before you decide?",
+      questionLabel:"What do you want to ask?",
+      questionPlaceholder:"e.g. Is the HOA fee likely to go up, has the roof been replaced...",
+      questionSend:"Send to Francisco & Maria",
+      questionSentTitle:"Question sent — {address} — from {buyer}",
+      questionSentFooter:"Francisco & Maria will follow up before you need to decide.",
+      prevBtn:"← Previous", nextBtn:"Next →", reviewedOf:"{decided} of {total} reviewed",
+      contact:"Questions on any of these? Text <b>Francisco</b> 919-426-7984 or <b>Maria</b> 919-671-5108.",
+      interestedToast:"Sent to Freddy & Maria — you want to see {address}",
+      passedToast:"Passed — {address}",
+      docsReviewedToast:"Marked documents reviewed for {address}",
+      driveByToast:"Got it — thanks for checking out the area",
+      loading:"Loading your properties…",
+      missingToken:"This link is missing its code. Please check the link Freddy or Maria sent you.",
+      notFound:"We couldn't find that link. Please check the link Freddy or Maria sent you."
+    },
+    es: {
+      eyebrow:"Tu Búsqueda de Casa", title:"Revisión de Propiedades", preparedFor:"Preparado para {name}",
+      passedChip:"Descartada", clearedNote:"No necesitas cargar con fotos ni documentos de una casa que ya descartaste.",
+      pendingChip:"Aún sin revisar", interestedChip:"Sigue interesándote",
+      hoaMo:"HOA ${amt}/mes", hoaSeeDocs:"HOA: ver documentos",
+      beds:"Habs", baths:"Baños", sqft:"Pies²", perSqft:"$ / Pie²",
+      documents:"Documentos", allDocuments:"Todos los Documentos", docType:"Planos, divulgaciones, estudios y más",
+      view:"Ver", hide:"Ocultar",
+      docEmailToggle:"¿No puedes ver los documentos? Envíamelos por correo",
+      docEmailLabel:"¿A dónde los enviamos?", docEmailPlaceholder:"tu@correo.com",
+      cancel:"Cancelar", docEmailSend:"Enviar documentos",
+      docEmailSentTitle:"En camino",
+      docEmailSentBody:"Te enviaremos estos documentos a {email} en breve — revisa tu bandeja de entrada (y spam) en un rato.",
+      docEmailToast:"Te enviaremos los documentos a {email}",
+      docEmailResend:"¿No los recibiste? Reenviar o usar otro correo",
+      beforeDecide:"Antes de Decidir",
+      confirmDocsPending:"Desliza para confirmar que revisaste los documentos", confirmDocsDone:"✓ Documentos revisados",
+      confirmDrivePending:"Desliza para confirmar que visitaste la zona", confirmDriveDone:"✓ Zona revisada",
+      mapsLink:"📍 Ver la zona en Google Maps ↗",
+      notesLabel:"Tus notas sobre esta", notesPlaceholder:"Qué te llamó la atención, alguna duda...",
+      passBtn:"Descartar", yesBtn:"Sigue interesándome",
+      questionToggle:"¿Tienes una pregunta sobre esta antes de decidir?",
+      questionLabel:"¿Qué quieres preguntar?",
+      questionPlaceholder:"ej. ¿Es probable que suba la cuota del HOA, se ha reemplazado el techo...?",
+      questionSend:"Enviar a Francisco y Maria",
+      questionSentTitle:"Pregunta enviada — {address} — de {buyer}",
+      questionSentFooter:"Francisco y Maria te responderán antes de que tengas que decidir.",
+      prevBtn:"← Anterior", nextBtn:"Siguiente →", reviewedOf:"{decided} de {total} revisadas",
+      contact:"¿Preguntas sobre alguna de estas? Escribe a <b>Francisco</b> al 919-426-7984 o a <b>Maria</b> al 919-671-5108.",
+      interestedToast:"Enviado a Freddy y Maria — quieres ver {address}",
+      passedToast:"Descartada — {address}",
+      docsReviewedToast:"Documentos marcados como revisados para {address}",
+      driveByToast:"Entendido — gracias por revisar la zona",
+      loading:"Cargando tus propiedades…",
+      missingToken:"A este enlace le falta el código. Revisa el enlace que te envió Francisco o Maria.",
+      notFound:"No pudimos encontrar ese enlace. Revisa el enlace que te envió Francisco o Maria."
+    }
+  };
+
+  // Lang isn't known until data loads, so pick a default for pre-load
+  // strings (missing token / loading) from the browser, then switch once
+  // STATE.lang arrives.
+  var preLoadLang = (navigator.language || 'en').slice(0,2) === 'es' ? 'es' : 'en';
+  var T = STRINGS[preLoadLang];
+  function tr(key, vars){
+    var s = T[key] || key;
+    if (vars) for (var k in vars) s = s.split('{'+k+'}').join(vars[k]);
+    return s;
+  }
+  function money(n){ return "$" + n.toLocaleString("en-US"); }
+
+  function showToast(msg){
+    var t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(showToast._h);
+    showToast._h = setTimeout(function(){ t.classList.remove('show'); }, 2200);
+  }
+
+  // -----------------------------------------------------------------------
+  // JSONP loader — GET the buyer's data via a <script> tag so the browser's
+  // CORS policy never comes into play (only fetch()/XHR are subject to it).
+  // -----------------------------------------------------------------------
+  var jsonpCounter = 0;
+  function jsonp(url, onData, onError){
+    var cbName = 'htHubCb_' + (++jsonpCounter) + '_' + Date.now();
+    var script = document.createElement('script');
+    var cleaned = false;
+    var timeout = setTimeout(function(){
+      if (cleaned) return;
+      cleanup();
+      onError(new Error('timeout'));
+    }, 15000);
+    function cleanup(){
+      cleaned = true;
+      clearTimeout(timeout);
+      delete window[cbName];
+      if (script.parentNode) script.parentNode.removeChild(script);
+    }
+    window[cbName] = function(payload){
+      if (cleaned) return;
+      cleanup();
+      onData(payload);
+    };
+    script.onerror = function(){
+      if (cleaned) return;
+      cleanup();
+      onError(new Error('script load error'));
+    };
+    script.src = url + (url.indexOf('?') >= 0 ? '&' : '?') + 'callback=' + cbName;
+    document.body.appendChild(script);
+  }
+
+  // -----------------------------------------------------------------------
+  // Write helper — fire-and-forget no-cors POST. Content-Type is left as
+  // the fetch default for a string body (text/plain;charset=UTF-8), which
+  // is a CORS-safelisted type — using application/json here would turn
+  // this into a non-simple request and no-cors mode would refuse to send
+  // it at all. Apps Script's doPost reads the raw body regardless of the
+  // declared content type, so this doesn't affect the server side.
+  // -----------------------------------------------------------------------
+  function postAction(action, payload, onDone){
+    var body = Object.assign({ action: action }, payload);
+    fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      body: JSON.stringify(body)
+    }).then(function(){
+      if (onDone) onDone(true);
+    }).catch(function(err){
+      console.error('postAction failed', action, err);
+      showToast('Could not save — check your connection');
+      if (onDone) onDone(false);
+    });
+  }
+
+  function setStatus(p, status){
+    p.status = (p.status === status) ? "pending" : status;
+    render();
+    postAction('submitSetStatus', { token: STATE.token, propId: p.propId, status: p.status }, function(){
+      if (p.status === "interested") showToast(tr('interestedToast', {address:p.address}));
+      if (p.status === "passed") showToast(tr('passedToast', {address:p.address}));
+    });
+  }
+
+  function toggleConfirm(p, key){
+    p[key] = !p[key];
+    render();
+    postAction('submitSetConfirm', { token: STATE.token, propId: p.propId, key: key, value: p[key] }, function(){
+      if (key === 'docsReviewed' && p[key]) showToast(tr('docsReviewedToast', {address:p.address}));
+      if (key === 'driveBy' && p[key]) showToast(tr('driveByToast'));
+    });
+  }
+
+  function buildConfirmRow(p, key, pendingLabel, confirmedLabel){
+    var row = document.createElement('div');
+    row.className = 'confirm-row' + (p[key] ? ' confirmed' : '');
+    row.innerHTML =
+      '<div class="confirm-track" tabindex="0" role="button" aria-pressed="'+(p[key]?'true':'false')+'">' +
+        '<div class="confirm-fill"></div>' +
+        '<div class="confirm-thumb">'+(p[key] ? '✓' : '→')+'</div>' +
+        '<span class="confirm-text">'+(p[key] ? confirmedLabel : pendingLabel)+'</span>' +
+      '</div>';
+    row.querySelector('.confirm-track').addEventListener('click', function(){ toggleConfirm(p, key); });
+    row.querySelector('.confirm-track').addEventListener('keydown', function(e){
+      if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggleConfirm(p, key); }
+    });
+    return row;
+  }
+
+  function renderReview(root){
+    var p = STATE.properties[STATE.current];
+    var total = STATE.properties.length;
+    var decided = STATE.properties.filter(function(x){ return x.status!=="pending"; }).length;
+    var passed = p.status === 'passed';
+
+    root.innerHTML =
+      '<div class="tabs" id="tabs"></div>' +
+      '<main>' +
+      (passed ?
+        '<div class="passed-card">' +
+          '<span class="status-chip passed">'+tr('passedChip')+'</span>' +
+          '<h2>'+p.address+'</h2>' +
+          '<div class="addr-sub">'+p.cityLine+' &middot; '+money(p.price)+'</div>' +
+          '<div class="cleared-note">'+tr('clearedNote')+'</div>' +
+        '</div>'
+        :
+        '<div class="photo">' +
+          '<img src="'+p.photoUrl+'" alt="'+p.address+'">' +
+          '<span class="status-chip '+p.status+'">'+(p.status==='pending'?tr('pendingChip'):tr('interestedChip'))+'</span>' +
+        '</div>' +
+        '<div class="addr-block">' +
+          '<h2>'+p.address+'</h2>' +
+          '<div class="addr-sub">'+p.cityLine+' &middot; MLS# '+p.mls+'</div>' +
+          '<div class="price-row"><span class="price">'+money(p.price)+'</span><span class="mls">'+(p.hoa? tr('hoaMo',{amt:p.hoa}) : tr('hoaSeeDocs'))+'</span></div>' +
+          '<div class="stat-grid">' +
+            '<div class="stat"><div class="v">'+p.beds+'</div><div class="l">'+tr('beds')+'</div></div>' +
+            '<div class="stat"><div class="v">'+p.baths+'</div><div class="l">'+tr('baths')+'</div></div>' +
+            '<div class="stat"><div class="v">'+p.sqft.toLocaleString()+'</div><div class="l">'+tr('sqft')+'</div></div>' +
+            '<div class="stat"><div class="v">'+Math.round(p.price/p.sqft)+'</div><div class="l">'+tr('perSqft')+'</div></div>' +
+          '</div>' +
+        '</div>' +
+        '<section class="block">' +
+          '<h3>'+tr('documents')+'</h3>' +
+          '<div id="docs"></div>' +
+          '<div id="docViewer"></div>' +
+          '<div id="docEmailArea"></div>' +
+        '</section>' +
+        '<section class="block">' +
+          '<h3>'+tr('beforeDecide')+'</h3>' +
+          '<div id="confirmDocsWrap"></div>' +
+          '<div style="height:10px"></div>' +
+          '<div id="confirmDriveWrap"></div>' +
+        '</section>'
+      ) +
+      '<section class="block">' +
+        '<label class="field-label" for="notes">'+tr('notesLabel')+'</label>' +
+        '<textarea id="notes" placeholder="'+tr('notesPlaceholder')+'">'+(p.reviewNotes||'')+'</textarea>' +
+      '</section>' +
+      '<div class="decision-bar">' +
+        '<button type="button" class="pass-btn '+(p.status==='passed'?'active':'')+'" id="passBtn">'+tr('passBtn')+'</button>' +
+        '<button type="button" class="yes-btn '+(p.status==='interested'?'active':'')+'" id="yesBtn">'+tr('yesBtn')+'</button>' +
+      '</div>' +
+      '<div id="questionArea"></div>' +
+      '<div class="nav-row">' +
+        '<button type="button" id="prevBtn" '+(STATE.current===0?'disabled':'')+'>'+tr('prevBtn')+'</button>' +
+        '<span class="progress-label">'+tr('reviewedOf',{decided:decided,total:total})+'</span>' +
+        '<button type="button" id="nextBtn" '+(STATE.current===total-1?'disabled':'')+'>'+tr('nextBtn')+'</button>' +
+      '</div>' +
+      '</main>' +
+      '<footer><div class="contact">'+tr('contact')+'</div></footer>';
+
+    if (!passed){
+      var docs = root.querySelector('#docs');
+      var row = document.createElement('div');
+      row.className = 'doc-row';
+      row.innerHTML = '<div class="doc-icon">\u{1F4C4}</div><div><div class="doc-name">'+tr('allDocuments')+'</div><div class="doc-type">'+tr('docType')+'</div></div>';
+      var openBtn = document.createElement('button');
+      openBtn.type = 'button'; openBtn.className = 'doc-open'; openBtn.textContent = tr('view');
+      row.appendChild(openBtn);
+      docs.appendChild(row);
+
+      var viewer = root.querySelector('#docViewer');
+      var galleryOpen = false;
+      openBtn.addEventListener('click', function(){
+        galleryOpen = !galleryOpen;
+        openBtn.textContent = galleryOpen ? tr('hide') : tr('view');
+        if (!galleryOpen){ viewer.innerHTML = ''; return; }
+        var frame = document.createElement('div');
+        frame.className = 'doc-viewer-frame';
+        frame.innerHTML = '<iframe src="https://drive.google.com/file/d/'+p.docFileId+'/preview" allow="autoplay"></iframe>';
+        viewer.innerHTML = '';
+        viewer.appendChild(frame);
+      });
+
+      docEmailOpen = false;
+      renderDocEmailArea(root.querySelector('#docEmailArea'), p);
+
+      root.querySelector('#confirmDocsWrap').appendChild(buildConfirmRow(p, 'docsReviewed', tr('confirmDocsPending'), tr('confirmDocsDone')));
+      var confirmDriveWrap = root.querySelector('#confirmDriveWrap');
+      confirmDriveWrap.appendChild(buildConfirmRow(p, 'driveBy', tr('confirmDrivePending'), tr('confirmDriveDone')));
+      var mapsLink = document.createElement('a');
+      mapsLink.className = 'maps-link';
+      mapsLink.target = '_blank'; mapsLink.rel = 'noopener';
+      mapsLink.href = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(p.address + ', ' + p.cityLine);
+      mapsLink.textContent = tr('mapsLink');
+      confirmDriveWrap.appendChild(mapsLink);
+    }
+
+    root.querySelector('#notes').addEventListener('change', function(e){
+      p.reviewNotes = e.target.value;
+      postAction('submitSetNotes', { token: STATE.token, propId: p.propId, notes: p.reviewNotes });
+    });
+    root.querySelector('#passBtn').addEventListener('click', function(){ setStatus(p,'passed'); });
+    root.querySelector('#yesBtn').addEventListener('click', function(){ setStatus(p,'interested'); });
+    root.querySelector('#prevBtn').addEventListener('click', function(){ questionOpen=false; STATE.current--; render(); });
+    root.querySelector('#nextBtn').addEventListener('click', function(){ questionOpen=false; STATE.current++; render(); });
+
+    renderQuestionArea(root.querySelector('#questionArea'), p);
+    renderTabs(root.querySelector('#tabs'));
+  }
+
+  var questionOpen = false;
+  var docEmailOpen = false;
+  function isValidEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+
+  function renderDocEmailArea(el, p){
+    if (!el) return;
+    if (p.emailRequest && p.emailRequest.email && !docEmailOpen){
+      el.innerHTML =
+        '<div class="doc-email-sent"><b>'+tr('docEmailSentTitle')+'</b>'+tr('docEmailSentBody',{email:p.emailRequest.email})+'</div>' +
+        '<button type="button" class="doc-email-toggle" id="docEmailResend">'+tr('docEmailResend')+'</button>';
+      el.querySelector('#docEmailResend').addEventListener('click', function(){ docEmailOpen = true; renderDocEmailArea(el, p); });
+      return;
+    }
+    if (!docEmailOpen){
+      el.innerHTML = '<button type="button" class="doc-email-toggle">'+tr('docEmailToggle')+'</button>';
+      el.querySelector('button').addEventListener('click', function(){ docEmailOpen = true; renderDocEmailArea(el, p); });
+      return;
+    }
+    var existingEmail = (p.emailRequest && p.emailRequest.email) || '';
+    el.innerHTML =
+      '<div class="doc-email-panel">' +
+        '<label class="field-label" for="docEmailInput">'+tr('docEmailLabel')+'</label>' +
+        '<input type="email" id="docEmailInput" placeholder="'+tr('docEmailPlaceholder')+'" autocomplete="email" value="'+existingEmail+'">' +
+        '<div>' +
+          '<button type="button" class="question-cancel" id="docEmailCancel">'+tr('cancel')+'</button>' +
+          '<button type="button" class="question-send" id="docEmailSend">'+tr('docEmailSend')+'</button>' +
+        '</div>' +
+      '</div>';
+    el.querySelector('#docEmailCancel').addEventListener('click', function(){ docEmailOpen=false; renderDocEmailArea(el, p); });
+    el.querySelector('#docEmailSend').addEventListener('click', function(){
+      var email = el.querySelector('#docEmailInput').value.trim();
+      if (!isValidEmail(email)) return;
+      p.emailRequest = { email: email, requestedAt: new Date().toISOString() };
+      docEmailOpen = false;
+      renderDocEmailArea(el, p);
+      showToast(tr('docEmailToast', {email:email}));
+      postAction('submitEmailDocs', { token: STATE.token, propId: p.propId, email: email });
+    });
+  }
+
+  function renderQuestionArea(el, p){
+    if (p.question){
+      el.innerHTML = '<div class="question-sent"><b>'+tr('questionSentTitle',{address:p.address, buyer:STATE.buyerName})+'</b>“'+p.question+'”<br>'+tr('questionSentFooter')+'</div>';
+      return;
+    }
+    if (!questionOpen){
+      el.innerHTML = '<button type="button" class="question-toggle">'+tr('questionToggle')+'</button>';
+      el.querySelector('button').addEventListener('click', function(){ questionOpen = true; renderQuestionArea(el, p); });
+      return;
+    }
+    el.innerHTML =
+      '<div class="question-panel">' +
+        '<label class="field-label" for="qText">'+tr('questionLabel')+'</label>' +
+        '<textarea id="qText" placeholder="'+tr('questionPlaceholder')+'"></textarea>' +
+        '<div>' +
+          '<button type="button" class="question-cancel" id="qCancel">'+tr('cancel')+'</button>' +
+          '<button type="button" class="question-send" id="qSend">'+tr('questionSend')+'</button>' +
+        '</div>' +
+      '</div>';
+    el.querySelector('#qCancel').addEventListener('click', function(){ questionOpen=false; renderQuestionArea(el, p); });
+    el.querySelector('#qSend').addEventListener('click', function(){
+      var text = el.querySelector('#qText').value.trim();
+      if (!text) return;
+      p.question = text;
+      questionOpen = false;
+      renderQuestionArea(el, p);
+      showToast(tr('questionSentTitle',{address:p.address, buyer:STATE.buyerName}));
+      postAction('submitSetQuestion', { token: STATE.token, propId: p.propId, question: text });
+    });
+  }
+
+  function renderTabs(tabsEl){
+    tabsEl.innerHTML = '';
+    STATE.properties.forEach(function(p,i){
+      var b = document.createElement('button');
+      b.className = 'tab' + (i===STATE.current?' current':'');
+      var dotClass = p.status!=='pending' ? p.status : (p.question ? 'question' : '');
+      b.innerHTML = String(i+1) + (dotClass ? '<span class="dot '+dotClass+'"></span>' : '');
+      b.addEventListener('click', function(){ STATE.current=i; render(); });
+      tabsEl.appendChild(b);
+    });
+  }
+
+  function render(){
+    var app = document.getElementById('app');
+    var total = STATE.properties.length;
+    var decided = STATE.properties.filter(function(x){ return x.status!=="pending"; }).length;
+    app.innerHTML =
+      '<header>' +
+        '<div class="eyebrow">'+tr('eyebrow')+'</div>' +
+        '<h1>'+tr('title')+'</h1>' +
+        '<div class="buyer-line">'+tr('preparedFor',{name:STATE.buyerName})+'</div>' +
+        '<div class="progress-row">' +
+          '<div class="progress-track"><div class="progress-fill" style="width:'+((decided/total)*100)+'%"></div></div>' +
+          '<span class="progress-label">'+decided+'/'+total+'</span>' +
+        '</div>' +
+      '</header>' +
+      '<div id="body"></div>';
+    renderReview(document.getElementById('body'));
+  }
+
+  function renderMessage(msg){
+    document.getElementById('app').innerHTML = '<div class="loading-state">'+msg+'</div>';
+  }
+
+  // -----------------------------------------------------------------------
+  // Boot: read ?t= from THIS page's URL (the GitHub Pages URL — the token
+  // travels as a query param here now, same cross-device persistence
+  // behavior as before, just off a different host), then JSONP-load the
+  // buyer's data from the Apps Script backend.
+  // -----------------------------------------------------------------------
+  if (!TOKEN) {
+    renderMessage(tr('missingToken'));
+    return;
+  }
+  renderMessage(tr('loading'));
+
+  jsonp(APPS_SCRIPT_URL + '?t=' + encodeURIComponent(TOKEN), function(payload){
+    if (!payload || !payload.ok || !payload.data) {
+      renderMessage(tr('notFound'));
+      return;
+    }
+    STATE = payload.data;
+    STATE.current = 0;
+    T = STRINGS[STATE.lang === 'es' ? 'es' : 'en'];
+    render();
+  }, function(err){
+    console.error('load failed', err);
+    renderMessage(tr('notFound'));
+  });
+})();
+</script>
+</body>
+</html>
