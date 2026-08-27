@@ -157,12 +157,12 @@
   .scale-legend div{flex:1; text-align:center; font-size:10px; color:var(--ink-faint); line-height:1.4;}
   .scale-legend b{display:block; font-size:13px; color:var(--ink-soft); font-variant-numeric:tabular-nums;}
 
-  .offer-toggle{display:flex; align-items:center; justify-content:space-between; border:1px solid var(--line); border-radius:10px; padding:12px 14px;}
-  .offer-toggle .t{font-size:13.5px; font-weight:600;}
-  .switch{width:42px; height:24px; border-radius:12px; background:var(--pass-bg); border:1px solid var(--line); position:relative; cursor:pointer; flex:none;}
-  .switch .knob{width:18px; height:18px; border-radius:50%; background:var(--paper); box-shadow:var(--shadow); position:absolute; top:2px; left:2px; transition:.15s;}
-  .switch.on{background:var(--good);}
-  .switch.on .knob{left:20px; background:#fff;}
+  .offer-decision{border:1px solid var(--line); border-radius:10px; padding:12px 14px;}
+  .offer-decision .t{font-size:13.5px; font-weight:600; margin-bottom:10px;}
+  .offer-decision-btns{display:flex; gap:8px;}
+  .odb{flex:1; border:1px solid var(--line); background:var(--paper); color:var(--ink); border-radius:8px; padding:10px 8px; font-size:13px; font-weight:600; cursor:pointer; transition:.15s;}
+  .odb-yes.active{background:var(--good-bg); border-color:var(--good); color:var(--good);}
+  .odb-no.active{background:var(--pass-bg); border-color:var(--pass); color:var(--ink-soft);}
 
   .brand-card{width:100%; border-radius:14px; display:block; margin-bottom:12px;}
 </style>
@@ -235,7 +235,10 @@
       noHomesBody:"Mark a few \"still want to see it\" in Property Review first — they'll line up here for tour day.",
       notesFromShowing:"Notes from the showing",
       notesFromShowingPlaceholder:"How did it feel walking in, anything that changed your mind...",
-      readyOfferToggle:"Ready to write an offer",
+      offerDecisionLabel:"Want to make an offer on this one?",
+      offerDecisionYes:"Yes, let's do it",
+      offerDecisionNo:"Not this one",
+      offerDecisionSavedToast:"Got it — thanks for letting us know",
       feedbackSavedToast:"Saved your feedback for {address}",
       rankGroups:[
         {cat:"Value", items:[["value","Overall value for the price"]]},
@@ -288,7 +291,10 @@
       noHomesBody:"Marca algunas como \"sigue interesándome\" en Revisión de Propiedades primero — aparecerán aquí para el día del recorrido.",
       notesFromShowing:"Notas de la visita",
       notesFromShowingPlaceholder:"¿Qué se sintió al entrar? ¿Algo que te hiciera cambiar de opinión...?",
-      readyOfferToggle:"Lista para hacer una oferta",
+      offerDecisionLabel:"¿Quieres hacer una oferta por esta?",
+      offerDecisionYes:"Sí, adelante",
+      offerDecisionNo:"Esta no",
+      offerDecisionSavedToast:"Listo — gracias por avisarnos",
       feedbackSavedToast:"Comentarios guardados para {address}",
       rankGroups:[
         {cat:"Valor", items:[["value","Valor general por el precio"]]},
@@ -634,7 +640,7 @@
 
   function renderTour(root){
     var interested = STATE.properties.filter(function(p){ return p.status==='interested'; });
-    var readyCount = interested.filter(function(p){ return p.feedback.offerReady; }).length;
+    var readyCount = interested.filter(function(p){ return p.feedback.offerDecision === 'yes'; }).length;
     var feedbackLeftCount = interested.filter(function(p){ return Object.keys(p.feedback.ranks).length>0; }).length;
 
     root.innerHTML =
@@ -716,15 +722,24 @@
       inner.appendChild(notesArea);
 
       var offer = document.createElement('div');
-      offer.className = 'offer-toggle';
-      offer.innerHTML = '<span class="t">'+tr('readyOfferToggle')+'</span><div class="switch '+(p.feedback.offerReady?'on':'')+'"><div class="knob"></div></div>';
-      offer.querySelector('.switch').addEventListener('click', function(){
-        p.feedback.offerReady = !p.feedback.offerReady;
+      offer.className = 'offer-decision';
+      offer.innerHTML =
+        '<div class="t">'+tr('offerDecisionLabel')+'</div>' +
+        '<div class="offer-decision-btns">' +
+          '<button type="button" class="odb odb-yes'+(p.feedback.offerDecision==='yes'?' active':'')+'">'+tr('offerDecisionYes')+'</button>' +
+          '<button type="button" class="odb odb-no'+(p.feedback.offerDecision==='no'?' active':'')+'">'+tr('offerDecisionNo')+'</button>' +
+        '</div>';
+      function setOfferDecision(decision){
+        p.feedback.offerDecision = (p.feedback.offerDecision === decision) ? 'undecided' : decision;
         var wasOpen = stop.classList.contains('open');
         renderTour(root);
         if (wasOpen) root.querySelectorAll('.stop')[idx].classList.add('open');
-        saveFeedback(p, false);
-      });
+        postAction('submitSetOfferDecision', { token: STATE.token, propId: p.propId, decision: p.feedback.offerDecision }, function(){
+          showToast(tr('offerDecisionSavedToast'));
+        });
+      }
+      offer.querySelector('.odb-yes').addEventListener('click', function(){ setOfferDecision('yes'); });
+      offer.querySelector('.odb-no').addEventListener('click', function(){ setOfferDecision('no'); });
       inner.appendChild(offer);
 
       stopsEl.appendChild(stop);
