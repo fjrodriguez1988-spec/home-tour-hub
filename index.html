@@ -72,6 +72,7 @@
   .price-row{display:flex; align-items:baseline; gap:10px; margin-top:8px;}
   .price{font-size:26px; font-weight:800; font-variant-numeric:tabular-nums; color:var(--ink);}
   .mls{font-size:11px; color:var(--ink-faint); font-variant-numeric:tabular-nums;}
+  .mls-link{color:var(--ink); font-weight:700; text-decoration:underline; text-underline-offset:2px;}
   .stat-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:10px; overflow:hidden; margin-top:14px;}
   .stat{background:var(--paper); padding:10px 6px; text-align:center;}
   .stat .v{font-size:15px; font-weight:700; font-variant-numeric:tabular-nums;}
@@ -198,6 +199,7 @@
       passedChip:"Passed", clearedNote:"You don't need to carry around photos or documents for a home you passed on.",
       pendingChip:"Not reviewed yet", interestedChip:"Still want to see it",
       hoaMo:"HOA ${amt}/mo", hoaSeeDocs:"HOA: see documents",
+      viewOnMls:"View on MLS ↗",
       beds:"Beds", baths:"Baths", sqft:"Sq Ft", perSqft:"$ / Sq Ft",
       documents:"Documents", allDocuments:"All Documents", docType:"Floor plans, disclosures, surveys & more",
       view:"View", hide:"Hide",
@@ -254,6 +256,7 @@
       passedChip:"Descartada", clearedNote:"No necesitas cargar con fotos ni documentos de una casa que ya descartaste.",
       pendingChip:"Aún sin revisar", interestedChip:"Sigue interesándote",
       hoaMo:"HOA ${amt}/mes", hoaSeeDocs:"HOA: ver documentos",
+      viewOnMls:"Ver en MLS ↗",
       beds:"Habs", baths:"Baños", sqft:"Pies²", perSqft:"$ / Pie²",
       documents:"Documentos", allDocuments:"Todos los Documentos", docType:"Planos, divulgaciones, estudios y más",
       view:"Ver", hide:"Ocultar",
@@ -466,7 +469,7 @@
         '</div>' +
         '<div class="addr-block">' +
           '<h2>'+p.address+'</h2>' +
-          '<div class="addr-sub">'+p.cityLine+' &middot; MLS# '+p.mls+'</div>' +
+          '<div class="addr-sub">'+p.cityLine+' &middot; MLS# '+p.mls+(p.mlsUrl ? ' &middot; <a class="mls-link" href="'+p.mlsUrl+'" target="_blank" rel="noopener">'+tr('viewOnMls')+'</a>' : '')+'</div>' +
           '<div class="price-row"><span class="price">'+money(p.price)+'</span><span class="mls">'+(p.hoa? tr('hoaMo',{amt:p.hoa}) : tr('hoaSeeDocs'))+'</span></div>' +
           '<div class="stat-grid">' +
             '<div class="stat"><div class="v">'+p.beds+'</div><div class="l">'+tr('beds')+'</div></div>' +
