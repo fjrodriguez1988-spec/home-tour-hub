@@ -56,6 +56,13 @@
   .tab .dot.interested{background:var(--good);}
   .tab .dot.passed{background:var(--pass);}
   .tab .dot.question{background:var(--warn);}
+  .admin-trigger{background:none; border:none; color:var(--ink-faint); opacity:.35; font-size:11px; letter-spacing:2px; padding:6px 10px; cursor:pointer;}
+  .admin-trigger:hover{opacity:.7;}
+  .admin-prompt{display:flex; gap:6px; justify-content:center; align-items:center; margin-top:8px;}
+  .admin-prompt input{font-size:13px; padding:6px 8px; border-radius:8px; border:1px solid var(--line); background:var(--paper); color:var(--ink); width:120px;}
+  .admin-prompt button{font-size:12px; padding:6px 10px; border-radius:8px; border:1px solid var(--line); background:none; color:var(--ink-soft); cursor:pointer;}
+  .admin-banner{margin-top:10px; font-size:11.5px; color:var(--warn); display:flex; justify-content:center; align-items:center; gap:10px;}
+  .admin-banner button{font-size:11px; padding:4px 10px; border-radius:6px; border:1px solid var(--warn); background:none; color:var(--warn); cursor:pointer;}
   main{flex:1; padding:20px; display:flex; flex-direction:column; gap:18px;}
   .photo{aspect-ratio:16/10; border-radius:14px; position:relative; overflow:hidden; display:flex; align-items:flex-end; padding:16px; background:var(--cream);}
   .photo img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;}
@@ -197,8 +204,65 @@
   // STATE.properties array. Nothing is removed from the Sheet; a passed
   // property still exists in STATE.properties and its data is untouched,
   // it's just not something the buyer navigates to day-to-day anymore.
+  //
+  // Admin view: a quiet, low-key unlock (small "..." trigger, password
+  // gate) lets Francisco/Maria see passed properties again in this same
+  // page — e.g. to un-pass one a client tapped by accident — without
+  // needing the Sheet. This is NOT real security (it's a plain string
+  // check in client-side JS, visible to anyone who reads the page source)
+  // — it's just a deliberate speed bump so a client browsing their own
+  // hub doesn't stumble into every property reappearing. The underlying
+  // write API has no stronger auth than this either, so it matches the
+  // page's existing threat model rather than introducing a new one.
+  var ADMIN_PASSWORD = 'MLFR';
+  var ADMIN_UNLOCKED = false;
+  try { ADMIN_UNLOCKED = sessionStorage.getItem('hthAdminUnlocked') === '1'; } catch(e){}
+  var adminPromptOpen = false;
+
   function visibleProperties(){
+    if (ADMIN_UNLOCKED) return STATE.properties;
     return STATE.properties.filter(function(p){ return p.status !== 'passed'; });
+  }
+
+  function renderAdminZone(el){
+    if (!el) return;
+    if (ADMIN_UNLOCKED){
+      el.innerHTML = '<div class="admin-banner">Admin view — passed properties showing<button type="button" id="adminLock">Exit</button></div>';
+      el.querySelector('#adminLock').addEventListener('click', function(){
+        try { sessionStorage.removeItem('hthAdminUnlocked'); } catch(e){}
+        ADMIN_UNLOCKED = false;
+        adminPromptOpen = false;
+        render();
+      });
+      return;
+    }
+    if (!adminPromptOpen){
+      el.innerHTML = '<button type="button" class="admin-trigger" id="adminTrigger" aria-label="Admin">&middot;&middot;&middot;</button>';
+      el.querySelector('#adminTrigger').addEventListener('click', function(){ adminPromptOpen = true; renderAdminZone(el); });
+      return;
+    }
+    el.innerHTML =
+      '<div class="admin-prompt">' +
+        '<input type="password" id="adminPw" placeholder="Code" autocomplete="off">' +
+        '<button type="button" id="adminGo">Go</button>' +
+        '<button type="button" id="adminCancel">&times;</button>' +
+      '</div>';
+    var pwInput = el.querySelector('#adminPw');
+    function tryUnlock(){
+      if (pwInput.value === ADMIN_PASSWORD){
+        ADMIN_UNLOCKED = true;
+        try { sessionStorage.setItem('hthAdminUnlocked', '1'); } catch(e){}
+        adminPromptOpen = false;
+        render();
+      } else {
+        pwInput.value = '';
+        pwInput.placeholder = 'Try again';
+      }
+    }
+    el.querySelector('#adminGo').addEventListener('click', tryUnlock);
+    pwInput.addEventListener('keydown', function(e){ if (e.key === 'Enter') tryUnlock(); });
+    el.querySelector('#adminCancel').addEventListener('click', function(){ adminPromptOpen = false; renderAdminZone(el); });
+    pwInput.focus();
   }
 
   var STRINGS = {
@@ -787,11 +851,13 @@
           '<button type="button" data-mode="review" class="'+(STATE.mode==='review'?'active':'')+'">'+tr('modeReview')+'</button>' +
           '<button type="button" data-mode="tour" class="'+(STATE.mode==='tour'?'active':'')+'">'+tr('modeTour')+'</button>' +
         '</div>' +
+        '<div id="adminZone"></div>' +
       '</header>' +
       '<div id="body"></div>';
     app.querySelectorAll('#modeSwitch button').forEach(function(b){
       b.addEventListener('click', function(){ setMode(b.dataset.mode); });
     });
+    renderAdminZone(document.getElementById('adminZone'));
     var body = document.getElementById('body');
     if (STATE.mode === 'tour') renderTour(body); else renderReview(body);
   }
