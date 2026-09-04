@@ -192,6 +192,15 @@
   var STATE = null;
   var TOKEN = new URLSearchParams(window.location.search).get('t');
 
+  // Properties marked "passed" are cleared out of the buyer's own view —
+  // tabs, nav, and progress counts all work off this list, not the raw
+  // STATE.properties array. Nothing is removed from the Sheet; a passed
+  // property still exists in STATE.properties and its data is untouched,
+  // it's just not something the buyer navigates to day-to-day anymore.
+  function visibleProperties(){
+    return STATE.properties.filter(function(p){ return p.status !== 'passed'; });
+  }
+
   var STRINGS = {
     en: {
       eyebrow:"Your Home Search", title:"Property Review", preparedFor:"Prepared for {name}",
@@ -448,8 +457,10 @@
 
   function renderReview(root){
     var p = STATE.properties[STATE.current];
-    var total = STATE.properties.length;
-    var decided = STATE.properties.filter(function(x){ return x.status!=="pending"; }).length;
+    var visible = visibleProperties();
+    var visIdx = visible.indexOf(p);
+    var total = visible.length;
+    var decided = visible.filter(function(x){ return x.status!=="pending"; }).length;
     var passed = p.status === 'passed';
 
     root.innerHTML =
@@ -501,9 +512,9 @@
       '</div>' +
       '<div id="questionArea"></div>' +
       '<div class="nav-row">' +
-        '<button type="button" id="prevBtn" '+(STATE.current===0?'disabled':'')+'>'+tr('prevBtn')+'</button>' +
+        '<button type="button" id="prevBtn" '+(visIdx<=0?'disabled':'')+'>'+tr('prevBtn')+'</button>' +
         '<span class="progress-label">'+tr('reviewedOf',{decided:decided,total:total})+'</span>' +
-        '<button type="button" id="nextBtn" '+(STATE.current===total-1?'disabled':'')+'>'+tr('nextBtn')+'</button>' +
+        '<button type="button" id="nextBtn" '+(visIdx===-1||visIdx===total-1?'disabled':'')+'>'+tr('nextBtn')+'</button>' +
       '</div>' +
       '</main>' +
       '<footer><img class="brand-card" src="contact_card.jpg" alt="Francisco and Maria Rodriguez contact card"><div class="contact">'+tr('contact')+'</div></footer>';
@@ -551,8 +562,16 @@
     });
     root.querySelector('#passBtn').addEventListener('click', function(){ setStatus(p,'passed'); });
     root.querySelector('#yesBtn').addEventListener('click', function(){ setStatus(p,'interested'); });
-    root.querySelector('#prevBtn').addEventListener('click', function(){ questionOpen=false; STATE.current--; render(); });
-    root.querySelector('#nextBtn').addEventListener('click', function(){ questionOpen=false; STATE.current++; render(); });
+    root.querySelector('#prevBtn').addEventListener('click', function(){
+      questionOpen=false;
+      if (visIdx>0) STATE.current = STATE.properties.indexOf(visible[visIdx-1]);
+      render();
+    });
+    root.querySelector('#nextBtn').addEventListener('click', function(){
+      questionOpen=false;
+      if (visIdx>=0 && visIdx<total-1) STATE.current = STATE.properties.indexOf(visible[visIdx+1]);
+      render();
+    });
 
     renderQuestionArea(root.querySelector('#questionArea'), p);
     renderTabs(root.querySelector('#tabs'));
@@ -631,12 +650,13 @@
 
   function renderTabs(tabsEl){
     tabsEl.innerHTML = '';
-    STATE.properties.forEach(function(p,i){
+    visibleProperties().forEach(function(p,i){
+      var realIdx = STATE.properties.indexOf(p);
       var b = document.createElement('button');
-      b.className = 'tab' + (i===STATE.current?' current':'');
+      b.className = 'tab' + (realIdx===STATE.current?' current':'');
       var dotClass = p.status!=='pending' ? p.status : (p.question ? 'question' : '');
       b.innerHTML = String(i+1) + (dotClass ? '<span class="dot '+dotClass+'"></span>' : '');
-      b.addEventListener('click', function(){ STATE.current=i; render(); });
+      b.addEventListener('click', function(){ STATE.current=realIdx; render(); });
       tabsEl.appendChild(b);
     });
   }
@@ -751,8 +771,9 @@
 
   function render(){
     var app = document.getElementById('app');
-    var total = STATE.properties.length;
-    var decided = STATE.properties.filter(function(x){ return x.status!=="pending"; }).length;
+    var visible = visibleProperties();
+    var total = visible.length;
+    var decided = visible.filter(function(x){ return x.status!=="pending"; }).length;
     app.innerHTML =
       '<header>' +
         '<div class="eyebrow">'+tr('eyebrow')+'</div>' +
@@ -797,7 +818,8 @@
       return;
     }
     STATE = payload.data;
-    STATE.current = 0;
+    var firstVisible = visibleProperties()[0];
+    STATE.current = firstVisible ? STATE.properties.indexOf(firstVisible) : 0;
     T = STRINGS[STATE.lang === 'es' ? 'es' : 'en'];
     render();
   }, function(err){
