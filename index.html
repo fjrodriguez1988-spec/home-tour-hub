@@ -48,7 +48,10 @@
   h1,h2,h3{font-family:'Poppins',Arial,sans-serif; margin:0;}
   .app{max-width:640px; margin:0 auto; min-height:100vh; background:var(--paper); box-shadow:var(--shadow); display:flex; flex-direction:column;}
   header{background:var(--navy); color:#fff; padding:22px 20px 18px;}
-  .hub-logo{display:block; height:78px; width:auto; margin:0 0 12px;}
+  .head-row{display:flex; align-items:center; justify-content:space-between; gap:12px;}
+  .head-text{min-width:0; flex:1 1 auto;}
+  .hub-logo{display:block; height:84px; width:auto; flex:none;}
+  @media (max-width:480px){ .hub-logo{height:64px;} }
   .eyebrow{font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:#AEBBC6; font-weight:600;}
   header h1{font-size:22px; font-weight:700; margin-top:4px;}
   .buyer-line{font-size:13px; color:#C7D2DA; margin-top:2px;}
@@ -850,10 +853,11 @@
     var decided = visible.filter(function(x){ return x.status!=="pending"; }).length;
     app.innerHTML =
       '<header>' +
-        '<img class="hub-logo" src="el_dorado_logo.png" alt="El Dorado Home Group">' +
+        '<div class="head-row"><div class="head-text">' +
         '<div class="eyebrow">'+tr('eyebrow')+'</div>' +
         '<h1>'+tr('title')+'</h1>' +
         '<div class="buyer-line">'+tr('preparedFor',{name:STATE.buyerName})+'</div>' +
+        '</div><img class="hub-logo" src="el_dorado_logo.png" alt="El Dorado Home Group"></div>' +
         '<div class="progress-row">' +
           '<div class="progress-track"><div class="progress-fill" style="width:'+((decided/total)*100)+'%"></div></div>' +
           '<span class="progress-label">'+decided+'/'+total+'</span>' +
