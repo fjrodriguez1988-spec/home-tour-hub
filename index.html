@@ -34,6 +34,13 @@
       --focus:#EDF1F4; --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.4);
     }
   }
+  /* Opt-in El Dorado Home Group look: only applies when the link carries &b=edhg */
+  html[data-brand="edhg"]{--navy:#0C2C42; --navy-deep:#0C2C42; --ink:#0C2C42; --focus:#0C2C42; --cream:#FAF6EF; --gold:#C9973A;}
+  html[data-brand="edhg"] header{border-bottom:3px solid #C9973A;}
+  html[data-brand="edhg"] .eyebrow{color:#C9973A; letter-spacing:.16em;}
+  html[data-brand="edhg"] .progress-fill{background:#C9973A;}
+  html[data-brand="edhg"] .tab.current{border-color:#C9973A; box-shadow:0 0 0 3px rgba(201,151,58,0.22);}
+  html[data-brand="edhg"] .brand-card{border:1px solid #C9973A;}
   *{box-sizing:border-box;}
   body{ margin:0; background:var(--cream); color:var(--ink); font-family:'Montserrat', Arial, sans-serif; -webkit-font-smoothing:antialiased; min-height:100vh; }
   a{color:inherit;}
@@ -198,6 +205,8 @@
 
   var STATE = null;
   var TOKEN = new URLSearchParams(window.location.search).get('t');
+  var BRAND = new URLSearchParams(window.location.search).get('b');
+  if (BRAND === 'edhg') { document.documentElement.setAttribute('data-brand','edhg'); document.title = 'El Dorado Home Group'; }
 
   // Properties marked "passed" are cleared out of the buyer's own view —
   // tabs, nav, and progress counts all work off this list, not the raw
@@ -840,7 +849,7 @@
     var decided = visible.filter(function(x){ return x.status!=="pending"; }).length;
     app.innerHTML =
       '<header>' +
-        '<div class="eyebrow">'+tr('eyebrow')+'</div>' +
+        '<div class="eyebrow">'+(BRAND==='edhg' ? 'El Dorado Home Group' : tr('eyebrow'))+'</div>' +
         '<h1>'+tr('title')+'</h1>' +
         '<div class="buyer-line">'+tr('preparedFor',{name:STATE.buyerName})+'</div>' +
         '<div class="progress-row">' +
