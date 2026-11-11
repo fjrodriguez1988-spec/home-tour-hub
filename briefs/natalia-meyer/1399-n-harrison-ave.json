@@ -1,0 +1,170 @@
+{
+ "en": {
+  "title": "Subdivision brief",
+  "headline": "Best read: promising on size, but it comes down to the street frontage and the Home Place covenants, and we don't have either yet.",
+  "linksTitle": "Look it up in the meeting",
+  "note": "Prepared from the MLS listing, Wake County tax records and the Town of Cary ordinance. Estimates only, the Town of Cary and Wake County decide what is allowed. Confirm everything before relying on it.",
+  "sections": [
+   {
+    "h": "Confirmed",
+    "kind": "ok",
+    "items": [
+     "Zoning is R-40 (county record).",
+     "Lot is 1.96 acres (85,377 sq ft). Split in two, that is 42,688 sq ft each, above the 40,000 sq ft minimum but only by about 2,700 sq ft per lot.",
+     "Density allows 2 homes: 1.96 acres x 1.08 = 2.12.",
+     "The MLS says it is outside Cary town limits, but the county record shows Cary planning jurisdiction (ETJ), so Cary's zoning rules apply.",
+     "1978 one story, 3 bed 3 bath, 3,336 sq ft. The public remarks say the home can stay or be demolished.",
+     "Only one county building permit is on record (number 0000004119, December 1993).",
+     "Price cut from $985,000 to $850,000, listed 188 days. The listing agent is Paulina Bohorquez at Keller Williams Realty Cary."
+    ]
+   },
+   {
+    "h": "Still to confirm",
+    "kind": "check",
+    "items": [
+     "Street frontage on N Harrison Ave. The listing shows lot dimensions as TBD. Two lots side by side need 300 ft on well and septic, or 250 ft with sewer.",
+     "The Home Place restrictive covenants. The MLS says Yes. They could limit lot size, one home per lot or splits.",
+     "Well and septic. Each new lot needs its own septic area plus a repair area, and the well has to stay clear. Wake County Environmental Services reviews splits of 3 lots or fewer.",
+     "Where the existing septic field and well sit compared with where a new lot line would go.",
+     "Whether the Town confirms Cary's rules apply here, and a survey."
+    ]
+   },
+   {
+    "h": "R-40 zoning rules (Town of Cary)",
+    "kind": "info",
+    "items": [
+     "Minimum lot area: 40,000 sq ft per lot.",
+     "Minimum lot width: 150 ft with well or septic, 125 ft with public sewer (add 10 ft on a corner lot).",
+     "Side setback 20 ft (septic) or 15 ft (sewer). Rear setback 30 ft. Street setback 50 ft on a thoroughfare, 30 ft on a collector, 20 ft otherwise.",
+     "Maximum height 35 ft. Maximum density 1.08 homes per acre.",
+     "New lots in an R-40 subdivision have to connect to public water and sewer."
+    ]
+   },
+   {
+    "h": "How a split usually works",
+    "kind": "info",
+    "items": [
+     "The usual route is an exempt plat: a tract of 2 acres or less split into 3 lots or fewer, with no new street, where every new lot meets the zoning standards. Cary's plat certificate cites Section 3.9 of its ordinance. The Town has to confirm this applies."
+    ]
+   }
+  ],
+  "links": [
+   [
+    "Wake County tax and parcel record for 1399 N Harrison Ave",
+    "https://services.wake.gov/realestate/Account.asp?id=0082860&stype=addr"
+   ],
+   [
+    "Town of Cary building permits online (search by address)",
+    "https://www.carync.gov/services-publications/residential-permits-inspections/home-construction-projects/permits"
+   ],
+   [
+    "Town of Cary permit records and reports",
+    "https://www.carync.gov/services-publications/residential-permits-inspections/reports-records"
+   ],
+   [
+    "Town of Cary site and subdivision plan index",
+    "https://sitesubplans.townofcary.org/"
+   ],
+   [
+    "Town of Cary plan review and plats (developing in Cary)",
+    "https://www.carync.gov/business-development/developing-in-cary"
+   ],
+   [
+    "Wake County iMAPS map (lot lines, zoning, jurisdiction)",
+    "https://maps.raleighnc.gov/imaps/"
+   ],
+   [
+    "Cary zoning ordinance, Chapter 6 dimensional standards",
+    "https://www.zoneomics.com/code/cary-NC/chapter_6"
+   ],
+   [
+    "Wake County septic: subdivision submission and review",
+    "https://www.wake.gov/departments-government/onsite-water-protection/septic-system-permitting/technical-assistance/subdivision-submission-and-review"
+   ]
+  ]
+ },
+ "es": {
+  "title": "Resumen de subdivisión",
+  "headline": "Mi lectura: prometedor por el tamaño, pero depende del frente a la calle y de los convenios de Home Place, y todavía no tenemos ninguno de los dos.",
+  "linksTitle": "Para consultar en la reunión",
+  "note": "Preparado con el listado del MLS, los registros de impuestos del condado de Wake y la ordenanza del Municipio de Cary. Son estimados, el Municipio de Cary y el condado de Wake deciden lo que se permite. Confirme todo antes de depender de esto.",
+  "sections": [
+   {
+    "h": "Confirmado",
+    "kind": "ok",
+    "items": [
+     "La zonificación es R-40 (registro del condado).",
+     "El lote es de 1.96 acres (85,377 pies cuadrados). Dividido en dos son 42,688 pies cuadrados cada uno, más del mínimo de 40,000 pero solo por unos 2,700 pies cuadrados por lote.",
+     "La densidad permite 2 casas: 1.96 acres x 1.08 = 2.12.",
+     "El MLS dice que está fuera del límite del municipio de Cary, pero el registro del condado muestra jurisdicción de planificación de Cary (ETJ), así que aplican las reglas de zonificación de Cary.",
+     "Casa de 1978 de un piso, 3 recámaras, 3 baños, 3,336 pies cuadrados. Los comentarios públicos dicen que la casa puede quedarse o demolerse.",
+     "Solo hay un permiso de construcción del condado registrado (número 0000004119, diciembre de 1993).",
+     "El precio bajó de $985,000 a $850,000 y lleva 188 días listada. La agente del listado es Paulina Bohorquez de Keller Williams Realty Cary."
+    ]
+   },
+   {
+    "h": "Falta confirmar",
+    "kind": "check",
+    "items": [
+     "El frente sobre N Harrison Ave. El listado muestra las dimensiones del lote como TBD. Dos lotes lado a lado necesitan 300 pies con pozo y séptico, o 250 pies con alcantarillado.",
+     "Los convenios restrictivos de Home Place. El MLS dice que Sí. Podrían limitar el tamaño del lote, una casa por lote o las divisiones.",
+     "Pozo y séptico. Cada lote nuevo necesita su propia área de séptico más un área de reserva, y el pozo debe quedar despejado. Environmental Services del condado de Wake revisa divisiones de 3 lotes o menos.",
+     "Dónde están el campo séptico y el pozo actuales en relación con la nueva línea del lote.",
+     "Que el Municipio confirme que aplican las reglas de Cary aquí, y un levantamiento (survey)."
+    ]
+   },
+   {
+    "h": "Reglas de zonificación R-40 (Municipio de Cary)",
+    "kind": "info",
+    "items": [
+     "Área mínima del lote: 40,000 pies cuadrados por lote.",
+     "Ancho mínimo del lote: 150 pies con pozo o séptico, 125 pies con alcantarillado público (10 pies más en lote de esquina).",
+     "Retiro lateral 20 pies (séptico) o 15 pies (alcantarillado). Retiro trasero 30 pies. Retiro a la calle 50 pies en vía principal, 30 pies en colectora, 20 pies en las demás.",
+     "Altura máxima 35 pies. Densidad máxima 1.08 casas por acre.",
+     "Los lotes nuevos en una subdivisión R-40 deben conectarse al agua y alcantarillado públicos."
+    ]
+   },
+   {
+    "h": "Cómo suele funcionar una división",
+    "kind": "info",
+    "items": [
+     "La ruta más común es un plat exento: un terreno de 2 acres o menos dividido en 3 lotes o menos, sin calle nueva, donde cada lote nuevo cumple con la zonificación. El certificado de plat de Cary cita la Sección 3.9 de su ordenanza. El Municipio tiene que confirmar que aplica."
+    ]
+   }
+  ],
+  "links": [
+   [
+    "Registro de impuestos y parcela del condado de Wake para 1399 N Harrison Ave",
+    "https://services.wake.gov/realestate/Account.asp?id=0082860&stype=addr"
+   ],
+   [
+    "Permisos de construcción de Cary en línea (buscar por dirección)",
+    "https://www.carync.gov/services-publications/residential-permits-inspections/home-construction-projects/permits"
+   ],
+   [
+    "Registros y reportes de permisos de Cary",
+    "https://www.carync.gov/services-publications/residential-permits-inspections/reports-records"
+   ],
+   [
+    "Índice de planos de sitio y subdivisión de Cary",
+    "https://sitesubplans.townofcary.org/"
+   ],
+   [
+    "Revisión de planos y plats de Cary",
+    "https://www.carync.gov/business-development/developing-in-cary"
+   ],
+   [
+    "Mapa iMAPS del condado de Wake (linderos, zonificación, jurisdicción)",
+    "https://maps.raleighnc.gov/imaps/"
+   ],
+   [
+    "Ordenanza de zonificación de Cary, Capítulo 6, medidas del lote",
+    "https://www.zoneomics.com/code/cary-NC/chapter_6"
+   ],
+   [
+    "Séptico del condado de Wake: revisión de subdivisiones",
+    "https://www.wake.gov/departments-government/onsite-water-protection/septic-system-permitting/technical-assistance/subdivision-submission-and-review"
+   ]
+  ]
+ }
+}

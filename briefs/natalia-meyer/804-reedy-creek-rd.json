@@ -1,0 +1,182 @@
+{
+ "en": {
+  "title": "Subdivision brief",
+  "headline": "Best read: a one lot teardown and rebuild. A two lot split only works if the Town approves a different layout, because the street frontage is short.",
+  "linksTitle": "Look it up in the meeting",
+  "note": "Prepared from the MLS listing, Wake County tax records and the Town of Cary ordinance. Estimates only, the Town of Cary and Wake County decide what is allowed. Confirm everything before relying on it.",
+  "sections": [
+   {
+    "h": "Confirmed",
+    "kind": "ok",
+    "items": [
+     "Zoning is R-40 (county record) and the lot is inside Cary town limits.",
+     "Listed lot is 1.98 acres (86,249 sq ft). Split in two, that is 43,124 sq ft each, above the 40,000 sq ft minimum.",
+     "Density allows 2 homes: 1.98 acres x 1.08 = 2.14.",
+     "No HOA and no restrictive covenants are shown. The county shows no building permits on file.",
+     "Seller is a church (Christ Family Church Inc), so approvals and timing can run slower."
+    ]
+   },
+   {
+    "h": "The problem",
+    "kind": "bad",
+    "items": [
+     "Street frontage. The 2005 recorded plat (in the documents) shows about 185 ft on Reedy Creek Rd. Two lots side by side need 250 ft with sewer or 300 ft with septic.",
+     "The plat also shows a pond, 100 ft stream buffers and a drainage easement crossing the tract, which cut into buildable ground.",
+     "The house is on septic today, but new lots in R-40 have to tie into public sewer."
+    ]
+   },
+   {
+    "h": "Still to confirm",
+    "kind": "check",
+    "items": [
+     "Which land actually sells. The county shows 4.92 acres on the parcel (owner Christ Family Church Inc) and the listing sells 1.98 acres. Confirm the 1.98 acres is its own recorded lot.",
+     "Whether the Town would accept a flag lot or another layout that works around the frontage.",
+     "Where the nearest public sewer line is.",
+     "A survey of the lot width, buffers and buildable area."
+    ]
+   },
+   {
+    "h": "R-40 zoning rules (Town of Cary)",
+    "kind": "info",
+    "items": [
+     "Minimum lot area: 40,000 sq ft per lot.",
+     "Minimum lot width: 150 ft with well or septic, 125 ft with public sewer (add 10 ft on a corner lot).",
+     "Side setback 20 ft (septic) or 15 ft (sewer). Rear setback 30 ft. Street setback 50 ft on a thoroughfare, 30 ft on a collector, 20 ft otherwise.",
+     "Maximum height 35 ft. Maximum density 1.08 homes per acre.",
+     "New lots in an R-40 subdivision have to connect to public water and sewer."
+    ]
+   },
+   {
+    "h": "How a split usually works",
+    "kind": "info",
+    "items": [
+     "The usual route is an exempt plat: a tract of 2 acres or less split into 3 lots or fewer, with no new street, where every new lot meets the zoning standards. Cary's plat certificate cites Section 3.9 of its ordinance. The Town has to confirm this applies."
+    ]
+   }
+  ],
+  "links": [
+   [
+    "Wake County tax and parcel record for 804 Reedy Creek Rd",
+    "https://services.wake.gov/realestate/Account.asp?id=0022731&stype=addr"
+   ],
+   [
+    "Town of Cary building permits online (search by address)",
+    "https://www.carync.gov/services-publications/residential-permits-inspections/home-construction-projects/permits"
+   ],
+   [
+    "Town of Cary permit records and reports",
+    "https://www.carync.gov/services-publications/residential-permits-inspections/reports-records"
+   ],
+   [
+    "Town of Cary site and subdivision plan index",
+    "https://sitesubplans.townofcary.org/"
+   ],
+   [
+    "Town of Cary plan review and plats (developing in Cary)",
+    "https://www.carync.gov/business-development/developing-in-cary"
+   ],
+   [
+    "Wake County iMAPS map (lot lines, zoning, jurisdiction)",
+    "https://maps.raleighnc.gov/imaps/"
+   ],
+   [
+    "Cary zoning ordinance, Chapter 6 dimensional standards",
+    "https://www.zoneomics.com/code/cary-NC/chapter_6"
+   ],
+   [
+    "Wake County septic: subdivision submission and review",
+    "https://www.wake.gov/departments-government/onsite-water-protection/septic-system-permitting/technical-assistance/subdivision-submission-and-review"
+   ]
+  ]
+ },
+ "es": {
+  "title": "Resumen de subdivisión",
+  "headline": "Mi lectura: demoler y reconstruir en un solo lote. Dividirlo en dos lotes solo funciona si el Municipio aprueba otro diseño, porque el frente a la calle es corto.",
+  "linksTitle": "Para consultar en la reunión",
+  "note": "Preparado con el listado del MLS, los registros de impuestos del condado de Wake y la ordenanza del Municipio de Cary. Son estimados, el Municipio de Cary y el condado de Wake deciden lo que se permite. Confirme todo antes de depender de esto.",
+  "sections": [
+   {
+    "h": "Confirmado",
+    "kind": "ok",
+    "items": [
+     "La zonificación es R-40 (registro del condado) y el lote está dentro del límite del municipio de Cary.",
+     "El lote listado es de 1.98 acres (86,249 pies cuadrados). Dividido en dos son 43,124 pies cuadrados cada uno, más del mínimo de 40,000.",
+     "La densidad permite 2 casas: 1.98 acres x 1.08 = 2.14.",
+     "No se muestra HOA ni convenios restrictivos. El condado no muestra permisos de construcción.",
+     "El vendedor es una iglesia (Christ Family Church Inc), así que las aprobaciones y los tiempos pueden ser más lentos."
+    ]
+   },
+   {
+    "h": "El problema",
+    "kind": "bad",
+    "items": [
+     "El frente a la calle. El plano registrado de 2005 (en los documentos) muestra unos 185 pies sobre Reedy Creek Rd. Dos lotes lado a lado necesitan 250 pies con alcantarillado o 300 pies con séptico.",
+     "El plano también muestra un estanque, franjas de protección de arroyo de 100 pies y una servidumbre de drenaje que cruzan el terreno y reducen el área construible.",
+     "La casa usa séptico hoy, pero los lotes nuevos en R-40 deben conectarse al alcantarillado público."
+    ]
+   },
+   {
+    "h": "Falta confirmar",
+    "kind": "check",
+    "items": [
+     "Qué terreno se vende realmente. El condado muestra 4.92 acres en la parcela (dueño Christ Family Church Inc) y el listado vende 1.98 acres. Confirmar que los 1.98 acres son un lote registrado aparte.",
+     "Si el Municipio aceptaría un lote tipo bandera u otro diseño que resuelva el frente.",
+     "Dónde está la línea de alcantarillado público más cercana.",
+     "Un levantamiento (survey) del ancho del lote, las franjas de protección y el área construible."
+    ]
+   },
+   {
+    "h": "Reglas de zonificación R-40 (Municipio de Cary)",
+    "kind": "info",
+    "items": [
+     "Área mínima del lote: 40,000 pies cuadrados por lote.",
+     "Ancho mínimo del lote: 150 pies con pozo o séptico, 125 pies con alcantarillado público (10 pies más en lote de esquina).",
+     "Retiro lateral 20 pies (séptico) o 15 pies (alcantarillado). Retiro trasero 30 pies. Retiro a la calle 50 pies en vía principal, 30 pies en colectora, 20 pies en las demás.",
+     "Altura máxima 35 pies. Densidad máxima 1.08 casas por acre.",
+     "Los lotes nuevos en una subdivisión R-40 deben conectarse al agua y alcantarillado públicos."
+    ]
+   },
+   {
+    "h": "Cómo suele funcionar una división",
+    "kind": "info",
+    "items": [
+     "La ruta más común es un plat exento: un terreno de 2 acres o menos dividido en 3 lotes o menos, sin calle nueva, donde cada lote nuevo cumple con la zonificación. El certificado de plat de Cary cita la Sección 3.9 de su ordenanza. El Municipio tiene que confirmar que aplica."
+    ]
+   }
+  ],
+  "links": [
+   [
+    "Registro de impuestos y parcela del condado de Wake para 804 Reedy Creek Rd",
+    "https://services.wake.gov/realestate/Account.asp?id=0022731&stype=addr"
+   ],
+   [
+    "Permisos de construcción de Cary en línea (buscar por dirección)",
+    "https://www.carync.gov/services-publications/residential-permits-inspections/home-construction-projects/permits"
+   ],
+   [
+    "Registros y reportes de permisos de Cary",
+    "https://www.carync.gov/services-publications/residential-permits-inspections/reports-records"
+   ],
+   [
+    "Índice de planos de sitio y subdivisión de Cary",
+    "https://sitesubplans.townofcary.org/"
+   ],
+   [
+    "Revisión de planos y plats de Cary",
+    "https://www.carync.gov/business-development/developing-in-cary"
+   ],
+   [
+    "Mapa iMAPS del condado de Wake (linderos, zonificación, jurisdicción)",
+    "https://maps.raleighnc.gov/imaps/"
+   ],
+   [
+    "Ordenanza de zonificación de Cary, Capítulo 6, medidas del lote",
+    "https://www.zoneomics.com/code/cary-NC/chapter_6"
+   ],
+   [
+    "Séptico del condado de Wake: revisión de subdivisiones",
+    "https://www.wake.gov/departments-government/onsite-water-protection/septic-system-permitting/technical-assistance/subdivision-submission-and-review"
+   ]
+  ]
+ }
+}

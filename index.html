@@ -97,6 +97,21 @@
   .stat .l{font-size:10px; color:var(--ink-faint); text-transform:uppercase; letter-spacing:.06em; margin-top:2px;}
   section.block{border:1px solid var(--line); border-radius:12px; padding:16px;}
   section.block h3{font-size:13px; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-soft); margin-bottom:10px;}
+
+  .brief h3{margin-bottom:6px;}
+  .brief .headline{font-size:14px; font-weight:700; line-height:1.45; margin:0 0 12px; color:var(--ink);}
+  .brief .bsec{margin-top:14px;}
+  .brief .bsec h4{font-size:12px; text-transform:uppercase; letter-spacing:.06em; margin:0 0 6px; color:var(--ink-soft);}
+  .brief ul{list-style:none; margin:0; padding:0;}
+  .brief li{font-size:13.5px; line-height:1.5; padding:6px 0 6px 26px; position:relative; border-top:1px solid var(--line);}
+  .brief li:first-child{border-top:none;}
+  .brief li:before{position:absolute; left:2px; top:6px; width:18px; height:18px; border-radius:50%; font-size:11px; font-weight:800; line-height:18px; text-align:center; color:#fff;}
+  .brief .ok li:before{content:"\2713"; background:#2F7D4A;}
+  .brief .bad li:before{content:"!"; background:#B4472A;}
+  .brief .check li:before{content:"?"; background:#B7791F;}
+  .brief .info li:before{content:"\00B7"; background:var(--ink-faint); font-size:16px;}
+  .brief .blinks a{display:block; font-size:13px; font-weight:700; color:var(--ink); text-decoration:underline; text-underline-offset:2px; padding:5px 0;}
+  .brief .bnote{font-size:11px; color:var(--ink-faint); margin-top:10px; line-height:1.4;}
   .doc-row{display:flex; align-items:center; gap:10px; padding:10px 0;}
   .doc-icon{width:30px; height:30px; border-radius:7px; background:var(--cream); display:flex; align-items:center; justify-content:center; flex:none;}
   .doc-name{font-size:13.5px; font-weight:600;}
@@ -532,6 +547,32 @@
     return row;
   }
 
+  // Optional per-property brief (extra notes shown above Documents). Loaded from briefs/<token>/<propId>.json
+  // next to this page when that file exists; silently skipped otherwise.
+  var BRIEFS = {};
+  function esc(t){ return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  function paintBrief(el, b){
+    if (!el || !b) return;
+    var L = b[STATE.lang] || b.en; if (!L) return;
+    var h = '<h3>'+esc(L.title)+'</h3><p class="headline">'+esc(L.headline)+'</p>';
+    (L.sections||[]).forEach(function(sec){
+      h += '<div class="bsec '+esc(sec.kind||'info')+'"><h4>'+esc(sec.h)+'</h4><ul>' + sec.items.map(function(i){ return '<li>'+esc(i)+'</li>'; }).join('') + '</ul></div>';
+    });
+    if ((L.links||[]).length){
+      h += '<div class="bsec blinks"><h4>'+esc(L.linksTitle||'Links')+'</h4>' + L.links.map(function(k){ return '<a href="'+esc(k[1])+'" target="_blank" rel="noopener">'+esc(k[0])+' \u2197</a>'; }).join('') + '</div>';
+    }
+    if (L.note) h += '<div class="bnote">'+esc(L.note)+'</div>';
+    el.innerHTML = h; el.style.display = '';
+  }
+  function loadBrief(p, el){
+    var key = TOKEN+'/'+p.propId;
+    if (key in BRIEFS){ paintBrief(el, BRIEFS[key]); return; }
+    fetch('briefs/'+encodeURIComponent(TOKEN)+'/'+encodeURIComponent(p.propId)+'.json', {cache:'no-cache'})
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(j){ BRIEFS[key] = j; if (STATE.properties[STATE.current] === p) paintBrief(document.getElementById('brief'), j); })
+      .catch(function(){ BRIEFS[key] = null; });
+  }
+
   function renderReview(root){
     var p = STATE.properties[STATE.current];
     var visible = visibleProperties();
@@ -566,6 +607,7 @@
             '<div class="stat"><div class="v">'+Math.round(p.price/p.sqft)+'</div><div class="l">'+tr('perSqft')+'</div></div>' +
           '</div>' +
         '</div>' +
+        '<section class="block brief" id="brief" style="display:none"></section>' +
         '<section class="block">' +
           '<h3>'+tr('documents')+'</h3>' +
           '<div id="docs"></div>' +
@@ -597,6 +639,7 @@
       '<footer><img class="brand-card" src="contact_card.jpg" alt="Francisco and Maria Rodriguez contact card"><div class="contact">'+tr('contact')+'</div></footer>';
 
     if (!passed){
+      loadBrief(p, root.querySelector('#brief'));
       var docs = root.querySelector('#docs');
       var row = document.createElement('div');
       row.className = 'doc-row';
