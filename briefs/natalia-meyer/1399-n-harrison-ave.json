@@ -11,7 +11,7 @@
     "items": [
      "Zoning is R-40 (county record).",
      "Lot is 1.96 acres (85,377 sq ft). Split in two, that is 42,688 sq ft each, above the 40,000 sq ft minimum but only by about 2,700 sq ft per lot.",
-     "Density allows 2 homes: 1.96 acres x 1.08 = 2.12.",
+     "Density: the zoning allows 1.08 homes for every acre of land. Multiply the acres by 1.08 (1.96 acres x 1.08 = 2.12) and round down to whole homes, so 2 homes fit. Think of it as a cap on the number of homes, separate from the lot size minimum.",
      "The MLS says it is outside Cary town limits, but the county record shows Cary planning jurisdiction (ETJ), so Cary's zoning rules apply.",
      "1978 one story, 3 bed 3 bath, 3,336 sq ft. The public remarks say the home can stay or be demolished.",
      "Only one county building permit is on record (number 0000004119, December 1993).",
@@ -95,7 +95,7 @@
     "items": [
      "La zonificación es R-40 (registro del condado).",
      "El lote es de 1.96 acres (85,377 pies cuadrados). Dividido en dos son 42,688 pies cuadrados cada uno, más del mínimo de 40,000 pero solo por unos 2,700 pies cuadrados por lote.",
-     "La densidad permite 2 casas: 1.96 acres x 1.08 = 2.12.",
+     "Densidad: la zonificación permite 1.08 casas por cada acre de terreno. Se multiplican los acres por 1.08 (1.96 acres x 1.08 = 2.12) y se redondea hacia abajo a casas completas, así que caben 2 casas. Es un tope al número de casas, aparte del tamaño mínimo de lote.",
      "El MLS dice que está fuera del límite del municipio de Cary, pero el registro del condado muestra jurisdicción de planificación de Cary (ETJ), así que aplican las reglas de zonificación de Cary.",
      "Casa de 1978 de un piso, 3 recámaras, 3 baños, 3,336 pies cuadrados. Los comentarios públicos dicen que la casa puede quedarse o demolerse.",
      "Solo hay un permiso de construcción del condado registrado (número 0000004119, diciembre de 1993).",

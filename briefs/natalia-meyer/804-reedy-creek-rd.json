@@ -11,7 +11,7 @@
     "items": [
      "Zoning is R-40 (county record) and the lot is inside Cary town limits.",
      "Listed lot is 1.98 acres (86,249 sq ft). Split in two, that is 43,124 sq ft each, above the 40,000 sq ft minimum.",
-     "Density allows 2 homes: 1.98 acres x 1.08 = 2.14.",
+     "Density: the zoning allows 1.08 homes for every acre of land. Multiply the acres by 1.08 (1.98 acres x 1.08 = 2.14) and round down to whole homes, so 2 homes fit. Think of it as a cap on the number of homes, separate from the lot size minimum.",
      "No HOA and no restrictive covenants are shown. The county shows no building permits on file.",
      "Seller is a church (Christ Family Church Inc), so approvals and timing can run slower."
     ]
@@ -101,7 +101,7 @@
     "items": [
      "La zonificación es R-40 (registro del condado) y el lote está dentro del límite del municipio de Cary.",
      "El lote listado es de 1.98 acres (86,249 pies cuadrados). Dividido en dos son 43,124 pies cuadrados cada uno, más del mínimo de 40,000.",
-     "La densidad permite 2 casas: 1.98 acres x 1.08 = 2.14.",
+     "Densidad: la zonificación permite 1.08 casas por cada acre de terreno. Se multiplican los acres por 1.08 (1.98 acres x 1.08 = 2.14) y se redondea hacia abajo a casas completas, así que caben 2 casas. Es un tope al número de casas, aparte del tamaño mínimo de lote.",
      "No se muestra HOA ni convenios restrictivos. El condado no muestra permisos de construcción.",
      "El vendedor es una iglesia (Christ Family Church Inc), así que las aprobaciones y los tiempos pueden ser más lentos."
     ]
