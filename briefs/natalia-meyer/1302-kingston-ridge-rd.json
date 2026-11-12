@@ -1,0 +1,160 @@
+{
+ "en": {
+  "title": "Subdivision brief",
+  "headline": "Best read: fits on area and may have enough frontage. The restrictive covenants and the small area margin have to be checked first.",
+  "linksTitle": "Look it up in the meeting",
+  "note": "Prepared from the MLS listing, Wake County tax records and the Town of Cary ordinance. Estimates only, the Town of Cary decides what is allowed. Confirm everything before relying on it.",
+  "sections": [
+   {
+    "h": "Confirmed",
+    "kind": "ok",
+    "items": [
+     "Zoning is R-12 (county record) and the lot is inside Cary town limits.",
+     "Lot is 0.59 acres (about 25,700 sq ft). Split in two, that is about 12,850 sq ft each, only about 850 sq ft above the 12,000 sq ft minimum.",
+     "Density allows 2 homes: 0.59 acres x 3.63 = 2.1, rounded down to 2.",
+     "The county map shows a lot of roughly 230 by 130 ft, which would be enough for two 80 ft wide lots if the long side faces the street.",
+     "The MLS shows public sewer and public water and no HOA.",
+     "1965 split level in Hillsdale Forest, 4 bed 3 bath, 2,065 sq ft. Listed 36 days at $497,500.",
+     "The documents include utilities information and crawlspace work and permit records."
+    ]
+   },
+   {
+    "h": "Still to confirm",
+    "kind": "check",
+    "items": [
+     "The MLS says Restrictive Covenants: Yes. Get the recorded covenants and read them for lot size, one home per lot, or limits on splits.",
+     "Which side of the lot faces the street and the real frontage. Two lots need about 160 ft.",
+     "The area margin is small, so a survey should confirm the exact square footage.",
+     "Where the existing home sits compared with a new lot line and the 10 ft side setbacks.",
+     "Separate water and sewer connections for the new lot, the Town's approval of the split, and a survey."
+    ]
+   },
+   {
+    "h": "R-12 zoning rules (Town of Cary)",
+    "kind": "info",
+    "items": [
+     "Minimum lot area: 12,000 sq ft per lot (0.28 acres).",
+     "Minimum lot width: 80 ft (90 ft on a corner lot).",
+     "Side setback 10 ft. Rear setback 25 ft. Street setback 50 ft on a thoroughfare, 30 ft on a collector, 20 ft otherwise.",
+     "Maximum height 35 ft. Maximum density 3.63 homes per acre."
+    ]
+   },
+   {
+    "h": "How a split usually works",
+    "kind": "info",
+    "items": [
+     "The usual route is an exempt plat: a tract of 2 acres or less split into 3 lots or fewer, with no new street, where every new lot meets the zoning standards. Cary's plat certificate cites Section 3.9 of its ordinance. The Town has to confirm this applies."
+    ]
+   }
+  ],
+  "links": [
+   [
+    "Wake County tax and parcel record for 1302 Kingston Ridge Rd",
+    "https://services.wake.gov/realestate/Account.asp?id=0013058&stype=addr"
+   ],
+   [
+    "Town of Cary building permits online (search by address)",
+    "https://www.carync.gov/services-publications/residential-permits-inspections/home-construction-projects/permits"
+   ],
+   [
+    "Town of Cary permit records and reports",
+    "https://www.carync.gov/services-publications/residential-permits-inspections/reports-records"
+   ],
+   [
+    "Town of Cary site and subdivision plan index",
+    "https://sitesubplans.townofcary.org/"
+   ],
+   [
+    "Town of Cary plan review and plats (developing in Cary)",
+    "https://www.carync.gov/business-development/developing-in-cary"
+   ],
+   [
+    "Wake County iMAPS map (lot lines, zoning, jurisdiction)",
+    "https://maps.raleighnc.gov/imaps/"
+   ],
+   [
+    "Cary zoning ordinance, Chapter 6 dimensional standards",
+    "https://www.zoneomics.com/code/cary-NC/chapter_6"
+   ]
+  ]
+ },
+ "es": {
+  "title": "Resumen de subdivisión",
+  "headline": "Mi lectura: cabe por área y podría tener frente suficiente. Primero hay que revisar los convenios restrictivos y el margen pequeño de área.",
+  "linksTitle": "Para consultar en la reunión",
+  "note": "Preparado con el listado del MLS, los registros de impuestos del condado de Wake y la ordenanza del Municipio de Cary. Son estimados, el Municipio de Cary decide lo que se permite. Confirme todo antes de depender de esto.",
+  "sections": [
+   {
+    "h": "Confirmado",
+    "kind": "ok",
+    "items": [
+     "La zonificación es R-12 (registro del condado) y el lote está dentro del límite del municipio de Cary.",
+     "El lote es de 0.59 acres (unos 25,700 pies²). Dividido en dos son unos 12,850 pies² cada uno, solo unos 850 pies² más del mínimo de 12,000.",
+     "La densidad permite 2 casas: 0.59 acres x 3.63 = 2.1, redondeado hacia abajo a 2.",
+     "El mapa del condado muestra un lote de unos 230 por 130 pies, suficiente para dos lotes de 80 pies de ancho si el lado largo da a la calle.",
+     "El MLS muestra alcantarillado y agua públicos y sin HOA.",
+     "Casa de 1965 de niveles divididos en Hillsdale Forest, 4 recámaras, 3 baños, 2,065 pies². Lleva 36 días listada en $497,500.",
+     "Los documentos incluyen información de servicios y registros de trabajos y permiso del área de cimentación."
+    ]
+   },
+   {
+    "h": "Falta confirmar",
+    "kind": "check",
+    "items": [
+     "El MLS dice Convenios restrictivos: Sí. Hay que conseguir los convenios registrados y leerlos para ver tamaño de lote, una casa por lote o límites a las divisiones.",
+     "Qué lado del lote da a la calle y el frente real. Dos lotes necesitan unos 160 pies.",
+     "El margen de área es pequeño, así que un levantamiento (survey) debe confirmar los pies cuadrados exactos.",
+     "Dónde está la casa actual frente a una nueva línea de lote y los retiros laterales de 10 pies.",
+     "Conexiones separadas de agua y alcantarillado para el lote nuevo, la aprobación del Municipio para la división, y un levantamiento (survey)."
+    ]
+   },
+   {
+    "h": "Reglas de zonificación R-12 (Municipio de Cary)",
+    "kind": "info",
+    "items": [
+     "Área mínima del lote: 12,000 pies² por lote (0.28 acres).",
+     "Ancho mínimo del lote: 80 pies (90 pies en lote de esquina).",
+     "Retiro lateral 10 pies. Retiro trasero 25 pies. Retiro a la calle 50 pies en vía principal, 30 en colectora, 20 en las demás.",
+     "Altura máxima 35 pies. Densidad máxima 3.63 casas por acre."
+    ]
+   },
+   {
+    "h": "Cómo suele funcionar una división",
+    "kind": "info",
+    "items": [
+     "La ruta más común es un plat exento: un terreno de 2 acres o menos dividido en 3 lotes o menos, sin calle nueva, donde cada lote nuevo cumple con la zonificación. El certificado de plat de Cary cita la Sección 3.9 de su ordenanza. El Municipio tiene que confirmar que aplica."
+    ]
+   }
+  ],
+  "links": [
+   [
+    "Registro de impuestos y parcela del condado de Wake para 1302 Kingston Ridge Rd",
+    "https://services.wake.gov/realestate/Account.asp?id=0013058&stype=addr"
+   ],
+   [
+    "Permisos de construcción de Cary en línea (buscar por dirección)",
+    "https://www.carync.gov/services-publications/residential-permits-inspections/home-construction-projects/permits"
+   ],
+   [
+    "Registros y reportes de permisos de Cary",
+    "https://www.carync.gov/services-publications/residential-permits-inspections/reports-records"
+   ],
+   [
+    "Índice de planos de sitio y subdivisión de Cary",
+    "https://sitesubplans.townofcary.org/"
+   ],
+   [
+    "Revisión de planos y plats de Cary",
+    "https://www.carync.gov/business-development/developing-in-cary"
+   ],
+   [
+    "Mapa iMAPS del condado de Wake (linderos, zonificación, jurisdicción)",
+    "https://maps.raleighnc.gov/imaps/"
+   ],
+   [
+    "Ordenanza de zonificación de Cary, Capítulo 6, medidas del lote",
+    "https://www.zoneomics.com/code/cary-NC/chapter_6"
+   ]
+  ]
+ }
+}

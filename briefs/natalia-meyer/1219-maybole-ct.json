@@ -1,0 +1,158 @@
+{
+ "en": {
+  "title": "Subdivision brief",
+  "headline": "Best read: the biggest and cheapest lot on the list. It splits on area. It depends on the street frontage (it is a cul-de-sac) and on any stream protection strip.",
+  "linksTitle": "Look it up in the meeting",
+  "note": "Prepared from the MLS listing, Wake County tax records and the Town of Cary ordinance. Estimates only, the Town of Cary decides what is allowed. Confirm everything before relying on it.",
+  "sections": [
+   {
+    "h": "Confirmed",
+    "kind": "ok",
+    "items": [
+     "Zoning is R-12 (county record) and the lot is inside Cary town limits.",
+     "Lot is 0.66 acres (about 28,750 sq ft). Split in two, that is about 14,375 sq ft each, above the 12,000 sq ft minimum.",
+     "Density allows 2 homes: 0.66 acres x 3.63 = 2.4, rounded down to 2.",
+     "The MLS shows public sewer and public water, no HOA and no restrictive covenants.",
+     "1976 single level home, 3 bed 2 bath, 1,227 sq ft. Listed 34 days at $410,000.",
+     "The documents include a foundation engineer letter, a foundation piers lifetime warranty and the floor plan."
+    ]
+   },
+   {
+    "h": "Still to confirm",
+    "kind": "check",
+    "items": [
+     "Street frontage and width at the building line. The lot sits on a cul-de-sac, so the width at the street can be much less than the width of the lot. Two lots side by side need about 160 ft (80 ft each).",
+     "Whether a stream protection strip or watershed rule cuts into the buildable area. Check the Town map.",
+     "Where the existing home and the new lot line would sit compared with the 10 ft side setbacks.",
+     "Separate water and sewer connections for the new lot.",
+     "The Town's approval of the split and a survey."
+    ]
+   },
+   {
+    "h": "R-12 zoning rules (Town of Cary)",
+    "kind": "info",
+    "items": [
+     "Minimum lot area: 12,000 sq ft per lot (0.28 acres).",
+     "Minimum lot width: 80 ft (90 ft on a corner lot).",
+     "Side setback 10 ft. Rear setback 25 ft. Street setback 50 ft on a thoroughfare, 30 ft on a collector, 20 ft otherwise.",
+     "Maximum height 35 ft. Maximum density 3.63 homes per acre."
+    ]
+   },
+   {
+    "h": "How a split usually works",
+    "kind": "info",
+    "items": [
+     "The usual route is an exempt plat: a tract of 2 acres or less split into 3 lots or fewer, with no new street, where every new lot meets the zoning standards. Cary's plat certificate cites Section 3.9 of its ordinance. The Town has to confirm this applies."
+    ]
+   }
+  ],
+  "links": [
+   [
+    "Wake County tax and parcel record for 1219 Maybole Ct",
+    "https://services.wake.gov/realestate/Account.asp?id=0093933&stype=addr"
+   ],
+   [
+    "Town of Cary building permits online (search by address)",
+    "https://www.carync.gov/services-publications/residential-permits-inspections/home-construction-projects/permits"
+   ],
+   [
+    "Town of Cary permit records and reports",
+    "https://www.carync.gov/services-publications/residential-permits-inspections/reports-records"
+   ],
+   [
+    "Town of Cary site and subdivision plan index",
+    "https://sitesubplans.townofcary.org/"
+   ],
+   [
+    "Town of Cary plan review and plats (developing in Cary)",
+    "https://www.carync.gov/business-development/developing-in-cary"
+   ],
+   [
+    "Wake County iMAPS map (lot lines, zoning, jurisdiction)",
+    "https://maps.raleighnc.gov/imaps/"
+   ],
+   [
+    "Cary zoning ordinance, Chapter 6 dimensional standards",
+    "https://www.zoneomics.com/code/cary-NC/chapter_6"
+   ]
+  ]
+ },
+ "es": {
+  "title": "Resumen de subdivisión",
+  "headline": "Mi lectura: el lote más grande y más económico de la lista. Se divide por área. Depende del frente a la calle (es una calle sin salida) y de cualquier franja de protección de arroyo.",
+  "linksTitle": "Para consultar en la reunión",
+  "note": "Preparado con el listado del MLS, los registros de impuestos del condado de Wake y la ordenanza del Municipio de Cary. Son estimados, el Municipio de Cary decide lo que se permite. Confirme todo antes de depender de esto.",
+  "sections": [
+   {
+    "h": "Confirmado",
+    "kind": "ok",
+    "items": [
+     "La zonificación es R-12 (registro del condado) y el lote está dentro del límite del municipio de Cary.",
+     "El lote es de 0.66 acres (unos 28,750 pies²). Dividido en dos son unos 14,375 pies² cada uno, más del mínimo de 12,000.",
+     "La densidad permite 2 casas: 0.66 acres x 3.63 = 2.4, redondeado hacia abajo a 2.",
+     "El MLS muestra alcantarillado y agua públicos, sin HOA y sin convenios restrictivos.",
+     "Casa de un piso de 1976, 3 recámaras, 2 baños, 1,227 pies². Lleva 34 días listada en $410,000.",
+     "Los documentos incluyen una carta del ingeniero de cimentación, una garantía de por vida de los pilotes y el plano de la casa."
+    ]
+   },
+   {
+    "h": "Falta confirmar",
+    "kind": "check",
+    "items": [
+     "Frente a la calle y ancho en la línea de construcción. El lote está en una calle sin salida, así que el ancho en la calle puede ser mucho menor que el ancho del lote. Dos lotes lado a lado necesitan unos 160 pies (80 pies cada uno).",
+     "Si una franja de protección de arroyo o una regla de cuenca de agua (watershed) reduce el área construible. Revisar el mapa del Municipio.",
+     "Dónde quedarían la casa actual y la nueva línea del lote frente a los retiros laterales de 10 pies.",
+     "Conexiones separadas de agua y alcantarillado para el lote nuevo.",
+     "La aprobación del Municipio para la división y un levantamiento (survey)."
+    ]
+   },
+   {
+    "h": "Reglas de zonificación R-12 (Municipio de Cary)",
+    "kind": "info",
+    "items": [
+     "Área mínima del lote: 12,000 pies² por lote (0.28 acres).",
+     "Ancho mínimo del lote: 80 pies (90 pies en lote de esquina).",
+     "Retiro lateral 10 pies. Retiro trasero 25 pies. Retiro a la calle 50 pies en vía principal, 30 en colectora, 20 en las demás.",
+     "Altura máxima 35 pies. Densidad máxima 3.63 casas por acre."
+    ]
+   },
+   {
+    "h": "Cómo suele funcionar una división",
+    "kind": "info",
+    "items": [
+     "La ruta más común es un plat exento: un terreno de 2 acres o menos dividido en 3 lotes o menos, sin calle nueva, donde cada lote nuevo cumple con la zonificación. El certificado de plat de Cary cita la Sección 3.9 de su ordenanza. El Municipio tiene que confirmar que aplica."
+    ]
+   }
+  ],
+  "links": [
+   [
+    "Registro de impuestos y parcela del condado de Wake para 1219 Maybole Ct",
+    "https://services.wake.gov/realestate/Account.asp?id=0093933&stype=addr"
+   ],
+   [
+    "Permisos de construcción de Cary en línea (buscar por dirección)",
+    "https://www.carync.gov/services-publications/residential-permits-inspections/home-construction-projects/permits"
+   ],
+   [
+    "Registros y reportes de permisos de Cary",
+    "https://www.carync.gov/services-publications/residential-permits-inspections/reports-records"
+   ],
+   [
+    "Índice de planos de sitio y subdivisión de Cary",
+    "https://sitesubplans.townofcary.org/"
+   ],
+   [
+    "Revisión de planos y plats de Cary",
+    "https://www.carync.gov/business-development/developing-in-cary"
+   ],
+   [
+    "Mapa iMAPS del condado de Wake (linderos, zonificación, jurisdicción)",
+    "https://maps.raleighnc.gov/imaps/"
+   ],
+   [
+    "Ordenanza de zonificación de Cary, Capítulo 6, medidas del lote",
+    "https://www.zoneomics.com/code/cary-NC/chapter_6"
+   ]
+  ]
+ }
+}

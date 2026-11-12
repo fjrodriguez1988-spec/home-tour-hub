@@ -301,7 +301,7 @@
       pendingChip:"Not reviewed yet", interestedChip:"Still want to see it",
       hoaMo:"HOA ${amt}/mo", hoaSeeDocs:"HOA: see documents",
       viewOnMls:"View on MLS ↗",
-      beds:"Beds", baths:"Baths", sqft:"Sq Ft", perSqft:"$ / Sq Ft",
+      beds:"Beds", baths:"Baths", sqft:"Sq Ft", perSqft:"$ / Sq Ft", acres:"Acres", lotSqft:"Lot Sq Ft", perLotSqft:"$ / Lot Sq Ft",
       documents:"Documents", allDocuments:"All Documents", docType:"Floor plans, disclosures, surveys & more",
       view:"View", hide:"Hide",
       docEmailToggle:"Can't see the documents? Email them to me instead",
@@ -358,7 +358,7 @@
       pendingChip:"Aún sin revisar", interestedChip:"Sigue interesándote",
       hoaMo:"HOA ${amt}/mes", hoaSeeDocs:"HOA: ver documentos",
       viewOnMls:"Ver en MLS ↗",
-      beds:"Habs", baths:"Baños", sqft:"Pies²", perSqft:"$ / Pie²",
+      beds:"Habs", baths:"Baños", sqft:"Pies²", perSqft:"$ / Pie²", acres:"Acres", lotSqft:"Pies² del lote", perLotSqft:"$ / Pie² lote",
       documents:"Documentos", allDocuments:"Todos los Documentos", docType:"Planos, divulgaciones, estudios y más",
       view:"Ver", hide:"Ocultar",
       docEmailToggle:"¿No puedes ver los documentos? Envíamelos por correo",
@@ -600,11 +600,17 @@
           '<h2>'+p.address+'</h2>' +
           '<div class="addr-sub">'+p.cityLine+' &middot; MLS# '+p.mls+(p.mlsUrl ? ' &middot; <a class="mls-link" href="'+p.mlsUrl+'" target="_blank" rel="noopener">'+tr('viewOnMls')+'</a>' : '')+'</div>' +
           '<div class="price-row"><span class="price">'+money(p.price)+'</span><span class="mls">'+(p.hoa? tr('hoaMo',{amt:p.hoa}) : tr('hoaSeeDocs'))+'</span></div>' +
-          '<div class="stat-grid">' +
-            '<div class="stat"><div class="v">'+p.beds+'</div><div class="l">'+tr('beds')+'</div></div>' +
-            '<div class="stat"><div class="v">'+p.baths+'</div><div class="l">'+tr('baths')+'</div></div>' +
-            '<div class="stat"><div class="v">'+p.sqft.toLocaleString()+'</div><div class="l">'+tr('sqft')+'</div></div>' +
-            '<div class="stat"><div class="v">'+Math.round(p.price/p.sqft)+'</div><div class="l">'+tr('perSqft')+'</div></div>' +
+          '<div class="stat-grid"'+(p.beds===0?' style="grid-template-columns:repeat(3,1fr)"':'')+'>' +
+            (p.beds===0 ?
+              '<div class="stat"><div class="v">'+(p.sqft/43560).toFixed(2)+'</div><div class="l">'+tr('acres')+'</div></div>' +
+              '<div class="stat"><div class="v">'+p.sqft.toLocaleString()+'</div><div class="l">'+tr('lotSqft')+'</div></div>' +
+              '<div class="stat"><div class="v">'+(p.price/p.sqft).toFixed(1)+'</div><div class="l">'+tr('perLotSqft')+'</div></div>'
+            :
+              '<div class="stat"><div class="v">'+p.beds+'</div><div class="l">'+tr('beds')+'</div></div>' +
+              '<div class="stat"><div class="v">'+p.baths+'</div><div class="l">'+tr('baths')+'</div></div>' +
+              '<div class="stat"><div class="v">'+p.sqft.toLocaleString()+'</div><div class="l">'+tr('sqft')+'</div></div>' +
+              '<div class="stat"><div class="v">'+Math.round(p.price/p.sqft)+'</div><div class="l">'+tr('perSqft')+'</div></div>'
+            ) +
           '</div>' +
         '</div>' +
         '<section class="block brief" id="brief" style="display:none"></section>' +

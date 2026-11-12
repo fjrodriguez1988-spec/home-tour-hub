@@ -1,0 +1,144 @@
+{
+ "en": {
+  "title": "Lot brief",
+  "headline": "Best read: a vacant R-12 lot with the zoning confirmed by the Town in writing. One lot to build on, not to split.",
+  "linksTitle": "Look it up in the meeting",
+  "note": "Prepared from the MLS listing, Wake County tax records and the Town of Cary ordinance. Estimates only, the Town of Cary decides what is allowed. Confirm everything before relying on it.",
+  "sections": [
+   {
+    "h": "Confirmed",
+    "kind": "ok",
+    "items": [
+     "The Town of Cary zoning verification letter (July 2, 2026, in the documents) confirms R-12.",
+     "Lot is 0.28 acres (about 12,198 sq ft), just above the 12,000 sq ft minimum for one lot.",
+     "The MLS shows about 96 ft of road frontage. R-12 needs 80 ft.",
+     "Density: 0.28 acres x 3.63 = 1.02, so one home.",
+     "The documents include a Cary Utilities water and sewer availability and capacity letter, a survey and a flood zone map.",
+     "Active at $224,000, listed 206 days. No HOA and no restrictive covenants in the MLS."
+    ]
+   },
+   {
+    "h": "Still to confirm",
+    "kind": "check",
+    "items": [
+     "The letter says the lot is in the Swift Creek Watershed Protection Overlay. Check what limit that puts on paved and roofed area.",
+     "The lot is sloped. Read the survey in the documents for any easements and for where a house can sit.",
+     "Sloped ground can mean higher site work and foundation costs.",
+     "Water and sewer connection costs and timing. The letter shows availability, it does not reserve capacity.",
+     "Building permit steps with the Town."
+    ]
+   },
+   {
+    "h": "R-12 zoning rules (Town of Cary)",
+    "kind": "info",
+    "items": [
+     "Minimum lot area: 12,000 sq ft per lot (0.28 acres).",
+     "Minimum lot width: 80 ft (90 ft on a corner lot).",
+     "Side setback 10 ft. Rear setback 25 ft. Street setback 50 ft on a thoroughfare, 30 ft on a collector, 20 ft otherwise.",
+     "Maximum height 35 ft. Maximum density 3.63 homes per acre."
+    ]
+   }
+  ],
+  "links": [
+   [
+    "Wake County tax and parcel record for 904 SW Maynard Rd",
+    "https://services.wake.gov/realestate/Account.asp?id=0510714&stype=addr"
+   ],
+   [
+    "Town of Cary building permits online (search by address)",
+    "https://www.carync.gov/services-publications/residential-permits-inspections/home-construction-projects/permits"
+   ],
+   [
+    "Town of Cary permit records and reports",
+    "https://www.carync.gov/services-publications/residential-permits-inspections/reports-records"
+   ],
+   [
+    "Town of Cary site and subdivision plan index",
+    "https://sitesubplans.townofcary.org/"
+   ],
+   [
+    "Town of Cary plan review and plats (developing in Cary)",
+    "https://www.carync.gov/business-development/developing-in-cary"
+   ],
+   [
+    "Wake County iMAPS map (lot lines, zoning, jurisdiction)",
+    "https://maps.raleighnc.gov/imaps/"
+   ],
+   [
+    "Cary zoning ordinance, Chapter 6 dimensional standards",
+    "https://www.zoneomics.com/code/cary-NC/chapter_6"
+   ]
+  ]
+ },
+ "es": {
+  "title": "Resumen del lote",
+  "headline": "Mi lectura: un lote vacío R-12 con la zonificación confirmada por escrito por el Municipio. Un solo lote para construir, no para dividir.",
+  "linksTitle": "Para consultar en la reunión",
+  "note": "Preparado con el listado del MLS, los registros de impuestos del condado de Wake y la ordenanza del Municipio de Cary. Son estimados, el Municipio de Cary decide lo que se permite. Confirme todo antes de depender de esto.",
+  "sections": [
+   {
+    "h": "Confirmado",
+    "kind": "ok",
+    "items": [
+     "La carta de verificación de zonificación del Municipio de Cary (2 de julio de 2026, en los documentos) confirma R-12.",
+     "El lote es de 0.28 acres (unos 12,198 pies²), apenas arriba del mínimo de 12,000 pies² para un lote.",
+     "El MLS muestra unos 96 pies de frente a la calle. R-12 pide 80 pies.",
+     "Densidad: 0.28 acres x 3.63 = 1.02, o sea una casa.",
+     "Los documentos incluyen una carta de Cary Utilities sobre disponibilidad y capacidad de agua y alcantarillado, un survey y un mapa de zona de inundación.",
+     "Activo en $224,000, lleva 206 días listado. Sin HOA y sin convenios restrictivos en el MLS."
+    ]
+   },
+   {
+    "h": "Falta confirmar",
+    "kind": "check",
+    "items": [
+     "La carta dice que el lote está en el Swift Creek Watershed Protection Overlay. Revisar qué límite pone al área pavimentada y techada.",
+     "El lote tiene pendiente. Leer el survey en los documentos para ver servidumbres y dónde puede quedar una casa.",
+     "Un terreno con pendiente puede costar más en obra del sitio y cimentación.",
+     "Costo y tiempo de las conexiones de agua y alcantarillado. La carta muestra disponibilidad, no reserva capacidad.",
+     "Pasos del permiso de construcción con el Municipio."
+    ]
+   },
+   {
+    "h": "Reglas de zonificación R-12 (Municipio de Cary)",
+    "kind": "info",
+    "items": [
+     "Área mínima del lote: 12,000 pies² por lote (0.28 acres).",
+     "Ancho mínimo del lote: 80 pies (90 pies en lote de esquina).",
+     "Retiro lateral 10 pies. Retiro trasero 25 pies. Retiro a la calle 50 pies en vía principal, 30 en colectora, 20 en las demás.",
+     "Altura máxima 35 pies. Densidad máxima 3.63 casas por acre."
+    ]
+   }
+  ],
+  "links": [
+   [
+    "Registro de impuestos y parcela del condado de Wake para 904 SW Maynard Rd",
+    "https://services.wake.gov/realestate/Account.asp?id=0510714&stype=addr"
+   ],
+   [
+    "Permisos de construcción de Cary en línea (buscar por dirección)",
+    "https://www.carync.gov/services-publications/residential-permits-inspections/home-construction-projects/permits"
+   ],
+   [
+    "Registros y reportes de permisos de Cary",
+    "https://www.carync.gov/services-publications/residential-permits-inspections/reports-records"
+   ],
+   [
+    "Índice de planos de sitio y subdivisión de Cary",
+    "https://sitesubplans.townofcary.org/"
+   ],
+   [
+    "Revisión de planos y plats de Cary",
+    "https://www.carync.gov/business-development/developing-in-cary"
+   ],
+   [
+    "Mapa iMAPS del condado de Wake (linderos, zonificación, jurisdicción)",
+    "https://maps.raleighnc.gov/imaps/"
+   ],
+   [
+    "Ordenanza de zonificación de Cary, Capítulo 6, medidas del lote",
+    "https://www.zoneomics.com/code/cary-NC/chapter_6"
+   ]
+  ]
+ }
+}
