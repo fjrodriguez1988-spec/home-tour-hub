@@ -6,6 +6,16 @@
   "note": "Prepared from the MLS listing, Wake County tax records and the Town of Cary ordinance. Estimates only, the Town of Cary decides what is allowed. Confirm everything before relying on it.",
   "sections": [
    {
+    "h": "Updates on this property",
+    "kind": "info",
+    "items": [
+     "Nov 13: We called the Town of Cary and opened a case about water and sewer, annexation, the zoning conditions and subdividing. Case number 01589769. Cary said it will respond by about the middle of next week. You can call the Town at (919) 469-4000 and give that case number.",
+     "Nov 13: We contacted the listing agent with questions about the property. Waiting for a response.",
+     "Next: we are identifying the manager of the Wynston Ridge Association, which owns the strip of land along the Windstream Way side, to ask about it.",
+     "Next: we will follow up with the Town and the listing agent on Monday, Nov 16, and add what we learn here with its date and source. Answers by phone are not official until confirmed in writing."
+    ]
+   },
+   {
     "h": "Confirmed",
     "kind": "ok",
     "items": [
@@ -84,6 +94,16 @@
   "linksTitle": "Para consultar en la reunión",
   "note": "Preparado con el listado del MLS, los registros de impuestos del condado de Wake y la ordenanza del Municipio de Cary. Son estimados, el Municipio de Cary decide lo que se permite. Confirme todo antes de depender de esto.",
   "sections": [
+   {
+    "h": "Actualizaciones de esta propiedad",
+    "kind": "info",
+    "items": [
+     "13 nov: Llamamos al Town of Cary y abrimos un caso sobre agua y alcantarillado, anexión, las condiciones de la zonificación y la subdivisión. Número de caso 01589769. Cary dijo que responderá a más tardar a mediados de la próxima semana. Puedes llamar al Town al (919) 469-4000 y dar ese número de caso.",
+     "13 nov: Contactamos al agente del listado con preguntas sobre la propiedad. Esperamos su respuesta.",
+     "Sigue: estamos identificando quién administra la Wynston Ridge Association, dueña de la franja de terreno del lado de Windstream Way, para preguntarles sobre ella.",
+     "Sigue: daremos seguimiento con el Town y con el agente del listado el lunes 16 de noviembre, y pondremos aquí lo que sepamos con su fecha y fuente. Las respuestas por teléfono no son oficiales hasta confirmarlas por escrito."
+    ]
+   },
    {
     "h": "Confirmado",
     "kind": "ok",
